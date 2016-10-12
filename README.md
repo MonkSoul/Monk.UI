@@ -14,6 +14,8 @@
 
 ## 效果图
 
+![Monk.UI效果图](http://www.baisoft.org/public/yulan.gif)
+
 ## 开始使用
 
 ```html
