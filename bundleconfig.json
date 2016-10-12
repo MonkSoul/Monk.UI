@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "monk.ui.min.css",
+    "inputFiles": [
+      "monk.ui.css"
+    ]
+  },
+  {
+    "outputFileName": "monk.ui.min.js",
+    "inputFiles": [
+      "monk.ui.js"
+    ]
+  }
+]
