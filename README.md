@@ -14,6 +14,8 @@
 
 ## 效果图
 
+> 如果显示不了效果图，可以点击 [http://www.baisoft.org/public/yulan.gif](http://www.baisoft.org/public/yulan.gif) 查看
+
 ![Monk.UI效果图](http://www.baisoft.org/public/yulan.gif)
 
 ## 开始使用
