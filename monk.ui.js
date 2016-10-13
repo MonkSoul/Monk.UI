@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.0.9
+ * version: 0.1.0
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -19,7 +19,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.0.9";
+    exports.v = "0.1.0";
 
     // 文本框初始化
     exports.inputInit = function () {
@@ -71,6 +71,9 @@
                         $(this).val("");
                     }
                 });
+                if ($(this).siblings(".monk-iconfont.icon-monk-required").length > 0) {
+                    $(this).siblings(".monk-iconfont.icon-monk-required").eq(0).css("right", "-40px");
+                }
             }
         });
     };
