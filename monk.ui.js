@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.0.6
+ * version: 0.0.7
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -19,7 +19,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.0.2";
+    exports.v = "0.0.7";
 
     // 文本框初始化
     exports.inputInit = function () {
@@ -28,6 +28,8 @@
         _input.on({
             focus: function () {
                 $(this).parent(".monk-form-wrap").addClass("focus");
+                // 选中文本
+                $(this).select();
             },
             blur: function () {
                 if (!$(this).parent(".monk-form-wrap").hasClass("monk-form-time-wrap")) {
