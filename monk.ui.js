@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.0.8
+ * version: 0.0.9
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -19,12 +19,18 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.0.8";
+    exports.v = "0.0.9";
 
     // 文本框初始化
     exports.inputInit = function () {
         // 文本框
         var _input = $(".monk-form-input,.monk-form-textarea");
+        _input.each(function () {
+            if ($(this).siblings(".monk-iconfont.icon-monk-required").length > 0) {
+                $(this).siblings(".monk-iconfont.icon-monk-required").eq(0).css("right", "-40px");
+            }
+        });
+
         _input.on({
             focus: function () {
                 $(this).parent(".monk-form-wrap").addClass("focus");
@@ -35,11 +41,29 @@
                 if (!$(this).parent(".monk-form-wrap").hasClass("monk-form-time-wrap")) {
                     $(this).parent(".monk-form-wrap").removeClass("focus");
                 }
+            },
+            keyup: function () {
+                var clearInput = $(this).siblings(".monk-clear-input");
+                if (clearInput) {
+                    if ($.trim($(this).val()) !== "") {
+                        clearInput.css({ "visibility": "visible" });
+                        if ($(this).siblings(".monk-iconfont.icon-monk-required").length > 0) {
+                            $(this).siblings(".monk-iconfont.icon-monk-required").eq(0).css("right", "0");
+                        }
+                    }
+                    else {
+                        clearInput.css({ "visibility": "hidden" });
+                        if ($(this).siblings(".monk-iconfont.icon-monk-required").length > 0) {
+                            $(this).siblings(".monk-iconfont.icon-monk-required").eq(0).css("right", "-40px");
+                        }
+                    }
+                }
             }
         });
 
         $(".monk-clear-input").on({
             click: function () {
+                $(this).css({ "visibility": "hidden" });
                 $(this).siblings(".monk-form-input,.monk-form-textarea").each(function () {
                     var readonly = $(this).attr("readonly");
                     var disabled = $(this).attr("disabled");

@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.css
- * version: 0.0.8
+ * version: 0.0.9
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -95,7 +95,7 @@ template { display: none; }
 .monk-form-wrap .monk-iconfont { background: #f9f9f9; display: inline-block; height: 40px; width: 40px; line-height: 40px; text-align: center; font-size: 18px; color: #999; pointer-events: none; vertical-align: top; float: left; }
 .monk-form-wrap .monk-iconfont.border-left { border-left: 1px solid #e6e6e6; }
 .monk-form-wrap .monk-iconfont.border-right { border-right: 1px solid #e6e6e6; }
-.monk-form-wrap .monk-iconfont.icon-monk-required { background: transparent; font-size: 12px; width: 30px; color: #e74c3c; }
+.monk-form-wrap .monk-iconfont.icon-monk-required { background: transparent; font-size: 12px; width: 30px; color: #e74c3c; position: relative; }
 .monk-form-wrap .monk-iconfont.textarea-icon { height: 100px; line-height: 100px; }
 
 /*输入框*/
@@ -107,7 +107,7 @@ template { display: none; }
 .monk-form-input.xlarge { width: 500px; }
 .monk-form-tip { color: #999; font-size: 13px; padding: 3px 0 0 0; clear: both; }
 .monk-form-input[disabled] { background: #f2f2f2; }
-.monk-form-wrap span.monk-iconfont.monk-clear-input { pointer-events: auto; cursor: pointer; color: #d9d9d9; }
+.monk-form-wrap span.monk-iconfont.monk-clear-input { pointer-events: auto; cursor: pointer; color: #d9d9d9; visibility: hidden; }
 .monk-form-wrap span.monk-iconfont.monk-clear-input:hover { background: #f2f2f2; }
 
 /*多行输入*/
