@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.css
- * version: 0.0.1
+ * version: 0.0.2
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -160,8 +160,9 @@ template { display: none; }
 .monk-form-select.monk-none { display: none; }
 .monk-form-wrap.monk-form-select-wrap .monk-iconfont.monk-select-arrow:before { content: "\e606"; }
 .monk-form-wrap.monk-form-select-wrap.focus .monk-iconfont.monk-select-arrow:before { content: "\e602"; }
-.monk-form-option { height: 40px; padding: 0 10px; line-height: 40px; font-size: 14px; }
+.monk-form-option, .monk-form-optgroup { height: 40px; padding: 0 10px; line-height: 40px; font-size: 14px; }
 .monk-form-option:hover, .monk-form-option[selected] { background: #f2f2f2; cursor: pointer; }
+.monk-form-optgroup { font-weight: bold; background: #f1f1f1; }
 .monk-select { display: none; }
 
 /*时间选择器*/

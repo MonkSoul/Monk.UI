@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Monk.UI</title>
     <meta charset="utf-8" />
-    <link href="monk.ui.css" rel="stylesheet" />
+    <link href="monk.ui.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="monk-content-10">
@@ -291,12 +291,14 @@
                 </div>
                 <div class="monk-form-select monk-none">
                     <select class="monk-select">
+                        <option value="">请选择...</option>
                         <option value="0">列表项目一</option>
-                        <option value="1">列表项目二</option>
+                        <option value="1" selected="selected">列表项目二</option>
                         <option value="2">列表项目三</option>
                         <option value="3">列表项目四</option>
                         <option value="4">列表项目五</option>
                         <option value="5">列表项目六</option>
+                        <optgroup label="这里是分类栏目"></optgroup>
                         <option value="6">列表项目七</option>
                         <option value="7">列表项目八</option>
                         <option value="8">列表项目九</option>
@@ -316,12 +318,14 @@
                 </div>
                 <div class="monk-form-select monk-none">
                     <select class="monk-select">
+                        <option value="">请选择...</option>
                         <option value="0">列表项目一</option>
                         <option value="1">列表项目二</option>
                         <option value="2">列表项目三</option>
-                        <option value="3">列表项目四</option>
+                        <option value="3" selected="selected">列表项目四</option>
                         <option value="4">列表项目五</option>
                         <option value="5">列表项目六</option>
+                        <optgroup label="这里是分类栏目"></optgroup>
                         <option value="6">列表项目七</option>
                         <option value="7">列表项目八</option>
                         <option value="8">列表项目九</option>
@@ -341,13 +345,15 @@
                 </div>
                 <div class="monk-form-select monk-none">
                     <select class="monk-select">
+                        <option value="">请选择...</option>
                         <option value="0">列表项目一</option>
                         <option value="1">列表项目二</option>
                         <option value="2">列表项目三</option>
                         <option value="3">列表项目四</option>
                         <option value="4">列表项目五</option>
                         <option value="5">列表项目六</option>
-                        <option value="6">列表项目七</option>
+                        <optgroup label="这里是分类栏目"></optgroup>
+                        <option value="6" selected="selected">列表项目七</option>
                         <option value="7">列表项目八</option>
                         <option value="8">列表项目九</option>
                         <option value="9">列表项目十</option>
@@ -531,6 +537,6 @@ namespace Monk.App_Start
         <h1>更多功能，整理开发中。。。。</h1>
     </div>
     <script src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
-    <script src="monk.ui.js"></script>
+    <script src="monk.ui.min.js"></script>
 </body>
 </html>

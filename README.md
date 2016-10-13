@@ -6,7 +6,7 @@
 - 原创作者：`百小僧`
 - 开源协议：`MIT License`
 - 开发时间：`2016年10月13日`
-- 项目版本：`0.0.1`
+- 项目版本：`0.0.2`
 - 项目名称：`Monk.UI`
 - 版权所有：[百签软件（中山）有限公司](http://www.baisoft.org)
 - 联系方式：QQ群：123049073，作者QQ：8020292
@@ -22,11 +22,11 @@
 
 ```html
 <!--核心css-->
-<link href="monk.ui.css" rel="stylesheet" />
+<link href="monk.ui.min.css" rel="stylesheet" />
 <!--本UI依赖jquery，需jquery 1.8+ 版本-->
 <script src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
 <!--核心js-->
-<script src="monk.ui.js"></script>
+<script src="monk.ui.min.js"></script>
 ```
 
 ## 基础组件
@@ -355,12 +355,14 @@
     </div>
     <div class="monk-form-select monk-none">
         <select class="monk-select">
+            <option value="">请选择...</option>
             <option value="0">列表项目一</option>
-            <option value="1">列表项目二</option>
+            <option value="1" selected="selected">列表项目二</option>
             <option value="2">列表项目三</option>
             <option value="3">列表项目四</option>
             <option value="4">列表项目五</option>
             <option value="5">列表项目六</option>
+            <optgroup label="这里是分类栏目"></optgroup>
             <option value="6">列表项目七</option>
             <option value="7">列表项目八</option>
             <option value="8">列表项目九</option>
@@ -381,12 +383,14 @@
     </div>
     <div class="monk-form-select monk-none">
         <select class="monk-select">
+            <option value="">请选择...</option>
             <option value="0">列表项目一</option>
             <option value="1">列表项目二</option>
             <option value="2">列表项目三</option>
-            <option value="3">列表项目四</option>
+            <option value="3" selected="selected">列表项目四</option>
             <option value="4">列表项目五</option>
             <option value="5">列表项目六</option>
+            <optgroup label="这里是分类栏目"></optgroup>
             <option value="6">列表项目七</option>
             <option value="7">列表项目八</option>
             <option value="8">列表项目九</option>
@@ -407,13 +411,15 @@
     </div>
     <div class="monk-form-select monk-none">
         <select class="monk-select">
+            <option value="">请选择...</option>
             <option value="0">列表项目一</option>
             <option value="1">列表项目二</option>
             <option value="2">列表项目三</option>
             <option value="3">列表项目四</option>
             <option value="4">列表项目五</option>
             <option value="5">列表项目六</option>
-            <option value="6">列表项目七</option>
+            <optgroup label="这里是分类栏目"></optgroup>
+            <option value="6" selected="selected">列表项目七</option>
             <option value="7">列表项目八</option>
             <option value="8">列表项目九</option>
             <option value="9">列表项目十</option>

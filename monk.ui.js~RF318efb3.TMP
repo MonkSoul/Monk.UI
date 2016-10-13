@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.0.2
+ * version: 0.0.1
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,7 +18,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.0.2";
+    exports.v = "0.0.1";
 
     // 文本框初始化
     exports.inputInit = function () {
@@ -287,16 +287,10 @@
         $(".monk-form-select").each(function () {
             var that = $(this);
             var html = "";
-            that.find(".monk-select").children().each(function () {
-                if ($(this).is("option")) {
-                    var text = $.trim($(this).text());
-                    var value = $(this).attr("value");
-                    html += '<div class="monk-form-option" data-value="' + value + '">' + text + '</div>';
-                }
-                else if ($(this).is("optgroup")) {
-                    var label = $(this).attr("label");
-                    html += '<div class="monk-form-optgroup" data-value="' + value + '">' + label + '</div>';
-                }
+            that.find(".monk-select option").each(function () {
+                var text = $.trim($(this).text());
+                var value = $(this).attr("value");
+                html += '<div class="monk-form-option" data-value="' + value + '">' + text + '</div>';
             });
             that.prepend(html);
 
@@ -306,24 +300,16 @@
             var value = select.val();
             var text = $.trim(selectedOption.text());
             var niceOption = $(this).children(".monk-form-option[data-value='" + value + "']:contains(" + text + ")").eq(0);
-            niceOption.attr("selected", "selected").siblings(".monk-form-option").removeAttr("selected");
 
             var input = select.parent().prev(".monk-form-select-wrap").children(".monk-form-input");
-            input.val(text);
-        });
+            var scrollTop = niceOption.position().top;
 
-        // 搜索下拉
-        function _selectInputSearch(that) {
-            var value = $.trim(that.val());
-            var select = that.parent(".monk-form-select-wrap").next(".monk-form-select");
-            var option = select.children(".monk-form-option:contains(" + value + ")");
-            if (option && option.eq(0)) {
-                var scrollTop = option.eq(0).position().top;
-                select.animate({
-                    scrollTop: select.scrollTop() + scrollTop
-                }, 0);
-            }
-        }
+            niceOption.attr("selected", "selected").siblings(".monk-form-option").removeAttr("selected");
+            input.val(text);
+            that.animate({
+                scrollTop: that.scrollTop() + scrollTop
+            }, 0);
+        });
 
         // 下拉框
         var _selectInput = $(".monk-form-select-wrap .monk-form-input");
@@ -335,18 +321,20 @@
                 if (readonly != "readonly") {
                     inputWrap.next(".monk-form-select").removeClass("monk-none");
                 }
-
-                _selectInputSearch($(this));
             },
             blur: function () {
-                var select = $(this).parent(".monk-form-select-wrap").next(".monk-form-select");
-                var option = select.children(".monk-form-option[selected='selected']");
-                $(this).val($.trim(option.text()));
-
                 $(this).parent(".monk-form-select-wrap").next(".monk-form-select").addClass("monk-none");
             },
             keyup: function () {
-                _selectInputSearch($(this));
+                var value = $.trim($(this).val());
+                var select = $(this).parent(".monk-form-select-wrap").next(".monk-form-select");
+                var option = select.children(".monk-form-option:contains(" + value + ")");
+                if (option && option.eq(0)) {
+                    var scrollTop = option.eq(0).position().top;
+                    select.animate({
+                        scrollTop: select.scrollTop() + scrollTop
+                    }, 0);
+                }
             }
         });
         _selectOption.on({
