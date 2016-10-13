@@ -1,4 +1,5 @@
 # Monk.UI
+
 基于Jquery开发，让你的表单亮起来！
 
 ## 作者信息
@@ -6,7 +7,7 @@
 - 原创作者：`百小僧`
 - 开源协议：`MIT License`
 - 开发时间：`2016年10月13日`
-- 项目版本：`0.0.6`
+- 项目版本：`0.0.8`
 - 项目名称：`Monk.UI`
 - 版权所有：[百签软件（中山）有限公司](http://www.baisoft.org)
 - 联系方式：QQ群：`123049073`，作者QQ：`8020292`
@@ -35,7 +36,9 @@
 ## 基础组件
 
 ### 普通文本框
+
 - `min` 文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -47,7 +50,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `middle` 文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -59,7 +64,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `normal` 文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -71,7 +78,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `large` 文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -83,7 +92,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `xlarge` 文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -95,7 +106,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `必填` 文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -108,7 +121,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `只读` 文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -119,7 +134,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `禁用` 文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -130,8 +147,11 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 ### 多行文本框
+
 - `min` 多行文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -143,7 +163,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `middle` 多行文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -155,7 +177,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `normal` 多行文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -167,7 +191,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `large` 多行文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -179,7 +205,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `xlarge` 多行文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -191,7 +219,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `必填` 多行文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -204,7 +234,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `只读` 多行文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -215,7 +247,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `禁用` 多行文本框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -226,8 +260,11 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 ### 复选框
+
 - `正常` 复选框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -239,7 +276,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `只读` 复选框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -250,7 +289,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `禁用` 复选框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -261,8 +302,11 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 ### 滑块
+
 - `正常` 滑块
+
 ```html
 <!--未选中-->
 <div class="monk-form-item">
@@ -281,7 +325,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `只读` 滑块
+
 ```html
 <!--未选中-->
 <div class="monk-form-item">
@@ -300,7 +346,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `禁用` 滑块
+
 ```html
 <!--未选中-->
 <div class="monk-form-item">
@@ -319,8 +367,11 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 ### 单选框
+
 - `正常` 单选框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -332,7 +383,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `只读` 单选框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -344,7 +397,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `禁用` 单选框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -357,8 +412,11 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 ### 下拉选择
+
 - `正常` 下拉选择
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -386,7 +444,45 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
+- `树形` 下拉选择
+
+```html
+<div class="monk-form-item">
+     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
+     <div class="monk-form-wrap monk-form-select-wrap">
+         <span class="monk-iconfont border-right icon-monk-input"></span>
+         <input type="text" class="monk-form-input middle" placeholder="请输入或选择..." />
+         <span class="monk-iconfont monk-select-arrow icon-monk-arrowdown border-left"></span>
+     </div>
+     <div class="monk-form-select monk-none">
+         <select class="monk-select">
+             <option value="">请选择上级模块</option>
+             <option value="0">系统模块</option>
+             <option value='1'>├ 站点管理</option>
+             <option value='2'>　├ 站点设置</option>
+             <option value='3'>　├ 内容管理</option>
+             <option value='4'>　　├ 类别管理</option>
+             <option value='5'>　　├ 单页管理</option>
+             <option value='6'>　├ 频道管理</option>
+             <option value='7'>　├ 广告管理</option>
+             <option value='8'>　├ 留言板管理</option>
+             <option value='9'>　　├ 留言类别</option>
+             <option value='10'>　├ 碎片管理</option>
+             <option value='11'>　├ 友情链接管理</option>
+             <option value='12'>　　├ 类别管理</option>
+             <option value='13'>├ 微信管理</option>
+             <option value='14'>　├ 基本设置</option>
+             <option value='15'>├ 移动管理</option>
+             <option value='16'>　├ 基本设置</option>
+         </select>
+     </div>
+     <div class="monk-form-tip">写点什么描述一下</div>
+ </div>
+```
+
 - `只读` 下拉选择
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -414,7 +510,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `禁用` 下拉选择
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -442,8 +540,11 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 ### 数字输入框
+
 - `正常` 数字输入框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -456,7 +557,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `只读` 数字输入框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -467,7 +570,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `禁用` 数字输入框
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -478,8 +583,11 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 ### 时间选择
+
 - `正常` 时间选择
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -491,7 +599,9 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 - `禁用` 时间选择
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -503,8 +613,11 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 ### 文件选择
+
 - `正常` 文件选择
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -520,8 +633,11 @@
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
 ```
+
 ### 显示文本
+
 - `单行` 显示文本
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -530,7 +646,9 @@
     </div>
 </div>
 ```
+
 - `多行` 显示文本
+
 ```html
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
@@ -539,53 +657,78 @@
     </div>
 </div>
 ```
+
 ### 按钮
+
 - 提交按钮
+
 ```html
 <input type="submit" class="monk-input-button turquoise monk-form-submit" value="保存提交" />
 ```
+
 - 普通按钮
+
 ```html
 <button class="monk-input-button emerland">普通按钮</button>
 ```
+
 - 普通按钮2
+
 ```html
 <input type="button" class="monk-input-button peterRiver" value="普通按钮" />
 ```
+
 - 重置按钮
+
 ```html
 <input type="reset" class="monk-input-button amethyst" value="重置按钮" />
 ```
+
 - 灰色按钮
+
 ```html
 <input type="button" class="monk-input-button clouds" value="灰色按钮" />
 ```
+
 - 链接按钮
+
 ```html
 <a class="monk-input-button turquoise">链接按钮</a>
 ```
+
 - 图标按钮
+
 ```html
 <a class="monk-input-button turquoise"><span class="monk-iconfont icon-monk-time"></span>图标按钮</a>
 ```
+
 ### 第三方插件
+
 #### rainbow.js 代码高亮
+
 - 依赖库
+
 ```html
 <!--样式-->
 <link href="libs/rainbow-v2.1.2/themes/css/github.css" rel="stylesheet" />
 <!--脚本-->
 <script src="libs/rainbow-v2.1.2/rainbow-custom.min.js"></script>
 ```
+
 - html高亮
+
 ```html
 <pre><code data-language="html"><p>百签软件，源于百签。</p></code></pre>
 ```
+
 - css高亮
+
 ```html
 <pre><code data-language="css">* { box-sizing: border-box; -moz-box-sizing: border-box; }</code></pre>
 ```
+
 - javascript高亮
+
 ```html
 <pre><code data-language="javascript">exports.fileInit = function () {
     $(".monk-file").on({
@@ -597,7 +740,9 @@
     });
 };</code></pre>
 ```
+
 - php高亮
+
 ```html
 <pre><code data-language="php">namespace app\index\controller;
 class Index
@@ -608,7 +753,9 @@ class Index
     }
 }</code></pre>
 ```
+
 - c#高亮
+
 ```html
 <pre><code data-language="csharp">using Microsoft.Owin;
 using Owin;
@@ -624,7 +771,9 @@ namespace Monk.App_Start
     }
 }</code></pre>
 ```
+
 - java高亮
+
 ```html
 <pre><code data-language="java">public static void insertionSort(int[] data) {
     for (int index = 1; index < data.length; index++) {
@@ -639,10 +788,13 @@ namespace Monk.App_Start
     }
 }</code></pre>
 ```
+
 - sql高亮
+
 ```html
 <pre><code data-language="sql">select * from web where site='http://www.baisoft.org/'</code></pre>
 ```
+
 
 ### 更多功能，整理开发中。。。。
 

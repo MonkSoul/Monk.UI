@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.0.7
+ * version: 0.0.8
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -19,7 +19,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.0.7";
+    exports.v = "0.0.8";
 
     // 文本框初始化
     exports.inputInit = function () {
@@ -306,7 +306,7 @@
             var html = "";
             that.find(".monk-select").children().each(function () {
                 if ($(this).is("option")) {
-                    var text = $.trim($(this).text());
+                    var text = $(this).text();
                     var value = $(this).attr("value");
                     html += '<div class="monk-form-option" data-value="' + value + '">' + text + '</div>';
                 }
@@ -321,7 +321,7 @@
             var select = that.children(".monk-select");
             var selectedOption = select.children("option:selected");
             var value = select.val();
-            var text = $.trim(selectedOption.text());
+            var text = selectedOption.text();
             var niceOption = $(this).children(".monk-form-option[data-value='" + value + "']:contains(" + text + ")").eq(0);
             niceOption.attr("selected", "selected").siblings(".monk-form-option").removeAttr("selected");
 
@@ -358,7 +358,7 @@
             blur: function () {
                 var select = $(this).parent(".monk-form-select-wrap").next(".monk-form-select");
                 var option = select.children(".monk-form-option[selected='selected']");
-                $(this).val($.trim(option.text()));
+                $(this).val(option.text());
 
                 $(this).parent(".monk-form-select-wrap").next(".monk-form-select").addClass("monk-none");
             },
@@ -369,7 +369,7 @@
         _selectOption.on({
             mousedown: function () {
                 var value = $(this).attr("data-value");
-                var text = $.trim($(this).text());
+                var text = $(this).text();
                 var select = $(this).parent(".monk-form-select");
                 var input = select.prev(".monk-form-select-wrap").children(".monk-form-input");
                 var scrollTop = $(this).position().top;
@@ -388,7 +388,7 @@
         $(".monk-select").on({
             change: function () {
                 var value = $(this).val();
-                var text = $.trim($(this).children("option:selected").text());
+                var text = $(this).children("option:selected").text();
 
                 var parentSelect = $(this).parent(".monk-form-select");
                 var input = parentSelect.prev(".monk-form-select-wrap").children(".monk-form-input");
