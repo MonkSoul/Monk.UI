@@ -12,7 +12,8 @@
 - 版权所有：[百签软件（中山）有限公司](http://www.baisoft.org)
 - 联系方式：QQ群：`123049073`，作者QQ：`8020292`
 - 开发理念：`一切从简，只为了更懒`
-- 开源地址：[https://github.com/MonkSoul/Monk.UI/](https://github.com/MonkSoul/Monk.UI/)
+- Github地址：[https://github.com/MonkSoul/Monk.UI/](https://github.com/MonkSoul/Monk.UI/)
+- 码云地址：[http://git.oschina.net/baisoft_org/Monk.UI](http://git.oschina.net/baisoft_org/Monk.UI)
 
 ## 效果图
 
