@@ -20,7 +20,7 @@
 
 ## 兼容信息
 
-兼容IE9+（包涵IE9），Edge，Chrome，Firefox，Opera,Safari，和其他主流Webkit内核浏览器。
+兼容IE9+（包涵IE9），Edge，Chrome，Firefox，Opera，Safari，和其他主流Webkit内核浏览器。
 
 ## 开始使用
 
