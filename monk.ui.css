@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.css
- * version: 0.0.3
+ * version: 0.0.4
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -123,9 +123,7 @@ template { display: none; }
 .monk-form-checkbox-wrap[checked] .monk-form-checkbox { background: #1abc9c; color: #fff; transition: background 0.2s; -moz-transition: background 0.2s; }
 .monk-form-checkbox-wrap[checked] .monk-iconfont { color: #1abc9c; border-left: 1px solid #1abc9c; transition: border 0.2s; -moz-transition: border 0.2s; }
 .monk-form-checkbox-wrap.focus { border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; }
-
 .monk-form-checkbox-wrap[disabled] .monk-form-checkbox { background: #f2f2f2 !important; color: #000; }
-.monk-form-checkbox-wrap[disabled]:hover .monk-iconfont { border-left: 1px solid #e8e8e8; color: #d9d9d9; }
 .monk-checkbox { display: none; }
 
 /*滑块*/
