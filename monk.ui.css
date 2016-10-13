@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.css
- * version: 0.0.4
+ * version: 0.0.6
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -76,8 +76,8 @@ template { display: none; }
 * { box-sizing: border-box; -moz-box-sizing: border-box; }
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { margin-top: 1px; }
-::-webkit-scrollbar-thumb { background: #e8e8e9; }
-::-webkit-scrollbar-thumb:window-inactive { background: #e8e8e8; }
+::-webkit-scrollbar-thumb { background: #e6e6e6; }
+::-webkit-scrollbar-thumb:window-inactive { background: #e6e6e6; }
 
 .monk-color-peterriver { color: #3498db; }
 .monk-color-alizarin { color: #e74c3c; }
@@ -89,12 +89,12 @@ template { display: none; }
 .monk-form-item.inline { display: inline-block; }
 .monk-form-item { margin-bottom: 10px; clear: both; position: relative; }
 .monk-form-label { display: block; padding: 0 0 5px 0; }
-.monk-form-wrap { display: inline-block; border: 1px solid #e8e8e8; border-radius: 3px; position: relative; overflow: hidden; }
+.monk-form-wrap { display: inline-block; border: 1px solid #e6e6e6; border-radius: 3px; position: relative; overflow: hidden; }
 .monk-form-wrap.monk-full { width: 100%; }
 .monk-form-wrap.focus { border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; }
-.monk-form-wrap .monk-iconfont { background: #f9f9f9; display: inline-block; height: 40px; width: 40px; line-height: 40px; text-align: center; font-size: 18px; color: #d9d9d9; pointer-events: none; vertical-align: top; float: left; }
-.monk-form-wrap .monk-iconfont.border-left { border-left: 1px solid #e8e8e8; }
-.monk-form-wrap .monk-iconfont.border-right { border-right: 1px solid #e8e8e9; }
+.monk-form-wrap .monk-iconfont { background: #f9f9f9; display: inline-block; height: 40px; width: 40px; line-height: 40px; text-align: center; font-size: 18px; color: #999; pointer-events: none; vertical-align: top; float: left; }
+.monk-form-wrap .monk-iconfont.border-left { border-left: 1px solid #e6e6e6; }
+.monk-form-wrap .monk-iconfont.border-right { border-right: 1px solid #e6e6e6; }
 .monk-form-wrap .monk-iconfont.icon-monk-required { background: transparent; font-size: 12px; width: 30px; color: #e74c3c; }
 .monk-form-wrap .monk-iconfont.textarea-icon { height: 100px; line-height: 100px; }
 
@@ -107,6 +107,8 @@ template { display: none; }
 .monk-form-input.xlarge { width: 500px; }
 .monk-form-tip { color: #999; font-size: 13px; padding: 3px 0 0 0; clear: both; }
 .monk-form-input[disabled] { background: #f2f2f2; }
+.monk-form-wrap span.monk-iconfont.monk-clear-input { pointer-events: auto; cursor: pointer; color: #d9d9d9; }
+.monk-form-wrap span.monk-iconfont.monk-clear-input:hover { background: #f2f2f2; }
 
 /*多行输入*/
 .monk-form-textarea { height: 100px; border: none; outline: 0; background: transparent; display: inline-block; font-size: 16px; margin: 0; padding: 5px 10px; float: left; resize: none; line-height: 24px; }
@@ -128,17 +130,20 @@ template { display: none; }
 .monk-checkbox { display: none; }
 
 /*滑块*/
-.monk-form-switch-wrap { cursor: pointer; width: 80px; border: 1px solid #e8e8e8; transition: border 0.2s; -moz-transition: border 0.2s; }
-.monk-form-switch-wrap .monk-iconfont { margin-left: 0; transition: margin-left 0.2s; -moz-transition: margin-left 0.2s; content: "\e607"; }
-.monk-form-switch-wrap[checked] { border: 1px solid #1abc9c; }
-.monk-form-switch-wrap[checked] .monk-iconfont { margin-left: 40px; border-left: 1px solid #1abc9c; border-right: 0; background: #1abc9c; color: #fff; }
+.monk-form-switch-wrap { cursor: pointer; padding-left: 40px; border: 1px solid #e6e6e6; }
+.monk-form-switch-wrap .monk-iconfont { content: "\e607"; position: absolute; top: 0; left: 0; z-index: 10; }
+
+.monk-switch-text { display: block; float: left; height: 40px; line-height: 40px; padding: 0 10px; }
+
+.monk-form-switch-wrap[checked] { border: 1px solid #1abc9c; padding-left: 0; padding-right: 40px; }
+.monk-form-switch-wrap[checked] .monk-iconfont { border-left: 1px solid #1abc9c; border-right: 0; background: #1abc9c; color: #fff; left: auto; right: 0; }
 .monk-form-switch-wrap[checked] .monk-iconfont:before { content: "\e604"; }
 .monk-form-switch-wrap[disabled] { background: #f2f2f2; }
 .monk-form-switch-wrap.focus { border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; }
 .monk-switch { display: none; }
 
 /*单选按钮*/
-.monk-form-radio-wrap { cursor: pointer; background: transparent; border: 1px solid #e8e8e8; transition: background,border 0.2s; -moz-transition: background,border 0.2s; }
+.monk-form-radio-wrap { cursor: pointer; background: transparent; border: 1px solid #e6e6e6; transition: background,border 0.2s; -moz-transition: background,border 0.2s; }
 .monk-form-radio { display: inline-block; float: left; height: 40px; line-height: 40px; font-size: 16px; padding: 0 10px 0 0; }
 .monk-form-radio-wrap .monk-iconfont { background: transparent; font-size: 20px; content: "\e608"; }
 .monk-form-radio-wrap[checked] { background: #1abc9c; border: 1px solid #1abc9c; }
@@ -152,7 +157,7 @@ template { display: none; }
 .monk-radio { display: none; }
 
 /*下拉列表*/
-.monk-form-select { height: 200px; width: 282px; border: 1px solid #e8e8e8; position: absolute; left: 0; top: 64px; background: #fff; right: 0; z-index: 100; border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; overflow: auto; }
+.monk-form-select { height: 200px; width: 282px; border: 1px solid #e6e6e6; position: absolute; left: 0; top: 64px; background: #fff; right: 0; z-index: 100; border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; overflow: auto; }
 .monk-form-select.monk-none { display: none; }
 .monk-form-wrap.monk-form-select-wrap .monk-iconfont.monk-select-arrow:before { content: "\e606"; }
 .monk-form-wrap.monk-form-select-wrap.focus .monk-iconfont.monk-select-arrow:before { content: "\e602"; }
@@ -162,23 +167,23 @@ template { display: none; }
 .monk-select { display: none; }
 
 /*时间选择器*/
-.monk-form-time { height: 210px; width: 282px; border: 1px solid #e8e8e8; position: absolute; left: 0; top: 64px; background: #fff; right: 0; z-index: 100; border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; overflow: hidden; }
+.monk-form-time { height: 210px; width: 282px; border: 1px solid #e6e6e6; position: absolute; left: 0; top: 64px; background: #fff; right: 0; z-index: 100; border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; overflow: hidden; }
 .monk-form-time.monk-none { display: none; }
 
-.monk-form-time-title { border-bottom: 1px solid #e8e8e8; height: 40px; line-height: 40px; }
-.monk-form-time-title span { display: block; float: left; width: 33.3333%; border-right: 1px solid #e8e8e8; text-align: center; font-size: 14px; color: #3498db; }
+.monk-form-time-title { border-bottom: 1px solid #e6e6e6; height: 40px; line-height: 40px; }
+.monk-form-time-title span { display: block; float: left; width: 33.3333%; border-right: 1px solid #e6e6e6; text-align: center; font-size: 14px; color: #3498db; }
 .monk-form-time-title span:last-child { border-right: none; }
 
 .monk-form-time-list { overflow: auto; height: 130px; position: absolute; width: 100%; bottom: 40px; left: 0; right: 0; }
-.monk-form-time-item { float: left; width: 33.3333%; height: 100%; position: relative; overflow: auto; border-right: 1px solid #e8e8e8; }
+.monk-form-time-item { float: left; width: 33.3333%; height: 100%; position: relative; overflow: auto; border-right: 1px solid #e6e6e6; }
 .monk-form-time-item:last-child { border-right: none; }
 .monk-form-time-hour, .monk-form-time-minute, .monk-form-time-second { display: block; text-align: center; font-size: 16px; height: 32px; line-height: 32px; cursor: pointer; }
 .monk-form-time-hour:hover, .monk-form-time-minute:hover, .monk-form-time-second:hover,
 .monk-form-time-hour.selected, .monk-form-time-minute.selected, .monk-form-time-second.selected { background: #f2f2f2; cursor: pointer; }
 
-.monk-form-time-btn { height: 40px; border-top: 1px solid #e8e8e8; font-size: 14px; color: #3498db; cursor: pointer; position: absolute; width: 100%; bottom: 0; left: 0; right: 0; }
+.monk-form-time-btn { height: 40px; border-top: 1px solid #e6e6e6; font-size: 14px; color: #3498db; cursor: pointer; position: absolute; width: 100%; bottom: 0; left: 0; right: 0; }
 .monk-form-time-btn span { display: block; float: left; width: 50%; text-align: center; height: 40px; line-height: 40px; }
-.monk-form-time-btn span:first-child { border-right: 1px solid #e8e8e8; }
+.monk-form-time-btn span:first-child { border-right: 1px solid #e6e6e6; }
 
 /*文件选择*/
 .monk-form-image-wrap { border: none; position: relative; }

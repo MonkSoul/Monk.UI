@@ -6,7 +6,7 @@
 - 原创作者：`百小僧`
 - 开源协议：`MIT License`
 - 开发时间：`2016年10月13日`
-- 项目版本：`0.0.5`
+- 项目版本：`0.0.6`
 - 项目名称：`Monk.UI`
 - 版权所有：[百签软件（中山）有限公司](http://www.baisoft.org)
 - 联系方式：QQ群：`123049073`，作者QQ：`8020292`
@@ -15,9 +15,7 @@
 
 ## 效果图
 
-> 如果显示不了效果图，可以点击 [http://www.baisoft.org/public/monkui/](http://www.baisoft.org/public/monkui/) 体验
-
-![Monk.UI效果图](http://www.baisoft.org/public/yulan.gif)
+- 预览地址：[http://www.baisoft.org/public/monkui/](http://www.baisoft.org/public/monkui/)
 
 ## 兼容信息
 
@@ -44,6 +42,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input"></span>
         <input type="text" class="monk-form-input min" placeholder="请输入..." />
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -55,6 +54,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input"></span>
         <input type="text" class="monk-form-input middle" placeholder="请输入..." />
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -66,6 +66,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input"></span>
         <input type="text" class="monk-form-input normal" placeholder="请输入..." />
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -77,6 +78,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input"></span>
         <input type="text" class="monk-form-input large" placeholder="请输入..." />
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -88,6 +90,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input"></span>
         <input type="text" class="monk-form-input xlarge" placeholder="请输入..." />
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -100,6 +103,7 @@
         <span class="monk-iconfont border-right icon-monk-lock"></span>
         <input type="text" class="monk-form-input normal" placeholder="请输入..." />
         <span class="monk-iconfont icon-monk-required"></span>
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -134,6 +138,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input textarea-icon"></span>
         <textarea class="monk-form-textarea min" placeholder="请输入..."></textarea>
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input textarea-icon"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -145,6 +150,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input textarea-icon"></span>
         <textarea class="monk-form-textarea middle" placeholder="请输入..."></textarea>
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input textarea-icon"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -156,6 +162,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input textarea-icon"></span>
         <textarea class="monk-form-textarea normal" placeholder="请输入..."></textarea>
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input textarea-icon"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -167,6 +174,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input textarea-icon"></span>
         <textarea class="monk-form-textarea large" placeholder="请输入..."></textarea>
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input textarea-icon"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -178,6 +186,7 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input textarea-icon"></span>
         <textarea class="monk-form-textarea xlarge" placeholder="请输入..."></textarea>
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input textarea-icon"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -190,6 +199,7 @@
         <span class="monk-iconfont border-right icon-monk-input textarea-icon"></span>
         <textarea class="monk-form-textarea normal" placeholder="请输入..."></textarea>
         <span class="monk-iconfont icon-monk-required textarea-icon"></span>
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input textarea-icon"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -201,7 +211,6 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-input textarea-icon"></span>
         <textarea class="monk-form-textarea normal" placeholder="请输入..." readonly="readonly"></textarea>
-        <span class="monk-iconfont icon-monk-required textarea-icon"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -259,7 +268,7 @@
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
     <div class="monk-form-switch-list">
-        <input type="checkbox" name="like" class="monk-switch" value="0" />
+        <input type="checkbox" name="like" class="monk-switch" value="0" text="启用" />
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -267,7 +276,7 @@
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
     <div class="monk-form-switch-list">
-        <input type="checkbox" name="like" class="monk-switch" value="0" checked="checked" />
+        <input type="checkbox" name="like" class="monk-switch" value="0" checked="checked"  text="启用" />
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -278,7 +287,7 @@
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
     <div class="monk-form-switch-list">
-        <input type="checkbox" name="like" class="monk-switch" value="0" readonly="readonly" />
+        <input type="checkbox" name="like" class="monk-switch" value="0" readonly="readonly" text="启用"  />
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -286,7 +295,7 @@
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
     <div class="monk-form-switch-list">
-        <input type="checkbox" name="like" class="monk-switch" value="0" readonly="readonly" checked="checked" />
+        <input type="checkbox" name="like" class="monk-switch" value="0" readonly="readonly" checked="checked" text="启用" />
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -297,7 +306,7 @@
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
     <div class="monk-form-switch-list">
-        <input type="checkbox" name="like" class="monk-switch" value="0" disabled="disabled" />
+        <input type="checkbox" name="like" class="monk-switch" value="0" disabled="disabled" text="启用" />
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -305,7 +314,7 @@
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
     <div class="monk-form-switch-list">
-        <input type="checkbox" name="like" class="monk-switch" value="0" disabled="disabled" checked="checked" />
+        <input type="checkbox" name="like" class="monk-switch" value="0" disabled="disabled" checked="checked" text="启用" />
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -442,6 +451,7 @@
         <span class="monk-iconfont border-right icon-monk-number"></span>
         <input type="number" class="monk-form-input middle" onkeyup="this.value=this.value.replace(/!^[0-9]*$/g,'')" onafterpaste="this.value=this.value.replace(/!^[0-9]*$/g,'')" placeholder="请输入..." />
         <span class="monk-iconfont icon-monk-required"></span>
+        <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -453,7 +463,6 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-number"></span>
         <input type="number" class="monk-form-input middle" onkeyup="this.value=this.value.replace(/!^[0-9]*$/g,'')" onafterpaste="this.value=this.value.replace(/!^[0-9]*$/g,'')" readonly="readonly" placeholder="请输入..." />
-        <span class="monk-iconfont icon-monk-required"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>
@@ -465,7 +474,6 @@
     <div class="monk-form-wrap">
         <span class="monk-iconfont border-right icon-monk-number"></span>
         <input type="number" class="monk-form-input middle" onkeyup="this.value=this.value.replace(/!^[0-9]*$/g,'')" onafterpaste="this.value=this.value.replace(/!^[0-9]*$/g,'')" disabled="disabled" placeholder="请输入..." />
-        <span class="monk-iconfont icon-monk-required"></span>
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
 </div>

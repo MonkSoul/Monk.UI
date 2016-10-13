@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.0.4
+ * version: 0.0.6
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -33,6 +33,18 @@
                 if (!$(this).parent(".monk-form-wrap").hasClass("monk-form-time-wrap")) {
                     $(this).parent(".monk-form-wrap").removeClass("focus");
                 }
+            }
+        });
+
+        $(".monk-clear-input").on({
+            click: function () {
+                $(this).siblings(".monk-form-input,.monk-form-textarea").each(function () {
+                    var readonly = $(this).attr("readonly");
+                    var disabled = $(this).attr("disabled");
+                    if (readonly != "readonly" && disabled != "disabled") {
+                        $(this).val("");
+                    }
+                });
             }
         });
     };
@@ -131,6 +143,7 @@
             var that = $(this);
             var html = "";
             $(this).children(".monk-switch").each(function () {
+                var text = $(this).attr("text");
                 var value = $(this).val();
                 var checked = $(this).attr("checked");
                 var readonly = $(this).attr("readonly");
@@ -145,6 +158,7 @@
                 var disabledHtml = disabled ? 'disabled="disabled"' : '';
 
                 html += '<div class="monk-form-wrap monk-form-switch-wrap" ' + nameHtml + ' ' + checkedHtml + ' ' + readonlyHtml + ' ' + disabledHtml + ' ' + valueHtml + '>';
+                html += '<span class="monk-switch-text">' + text + '</span>';
                 html += '<span class="monk-iconfont border-right icon-monk-dacha"></span>';
                 html += '</div>\r\n';
             });
