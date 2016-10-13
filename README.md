@@ -18,6 +18,10 @@
 
 ![Monk.UI效果图](http://www.baisoft.org/public/yulan.gif)
 
+## 兼容信息
+
+兼容IE9+（包涵IE9），Edge，Chrome，Firefox，Opera,Safari，和其他主流Webkit内核浏览器。
+
 ## 开始使用
 
 ```html
