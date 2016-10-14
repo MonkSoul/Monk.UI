@@ -21,6 +21,10 @@
 
 - MarkDown编辑器预览地址：[http://www.baisoft.org/public/monkui/markdown.html](http://www.baisoft.org/public/monkui/markdown.html)
 
+## 更新日志
+
+- [https://github.com/MonkSoul/Monk.UI/releases](https://github.com/MonkSoul/Monk.UI/releases)
+
 ## 兼容信息
 
 兼容IE9+（包涵IE9），Edge，Chrome，Firefox，Opera，Safari，和其他主流Webkit内核浏览器。
