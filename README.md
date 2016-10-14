@@ -40,6 +40,8 @@
 <script src="monk.ui.min.js"></script>
 ```
 
+就怎么简单，无需调用。
+
 ## 基础组件
 
 ### 普通文本框
