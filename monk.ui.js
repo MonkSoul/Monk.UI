@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.1.0
+ * version: 0.1.1
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -19,7 +19,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.1.0";
+    exports.v = "0.1.1";
 
     // 文本框初始化
     exports.inputInit = function () {

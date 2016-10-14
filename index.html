@@ -504,26 +504,22 @@
             <!--========分割线========-->
             <a class="monk-input-button turquoise"><span class="monk-iconfont icon-monk-time"></span>图标按钮</a>
             <!--========分割线========-->
+            <button class="monk-input-button emerland" disabled="disabled">禁用按钮</button>
+            <!--========分割线========-->
         </form>
-        <h2>第三方插件</h2>
-        <h3>rainbow.js 代码高亮</h3>
+        <h1>第三方插件</h1>
+        <h2>rainbow.js 代码高亮</h2>
         <!--依赖样式和脚本-->
         <link href="libs/rainbow-v2.1.2/themes/css/github.css" rel="stylesheet" />
         <script src="libs/rainbow-v2.1.2/rainbow-custom.min.js"></script>
         <!--========分割线========-->
-        <h4>依赖库</h4>
-        <pre><code data-language="html"><!--样式-->
-<link href="libs/rainbow-v2.1.2/themes/css/github.css" rel="stylesheet" />
-<!--脚本-->
-<script src="libs/rainbow-v2.1.2/rainbow-custom.min.js"></script></code></pre>
-        <!--========分割线========-->
-        <h4>HTML高亮</h4>
+        <h3>HTML高亮</h3>
         <pre><code data-language="html"><p>百签软件，源于百签。</p></code></pre>
         <!--========分割线========-->
-        <h4>css高亮</h4>
+        <h3>css高亮</h3>
         <pre><code data-language="css">* { box-sizing: border-box; -moz-box-sizing: border-box; }</code></pre>
         <!--========分割线========-->
-        <h4>js高亮</h4>
+        <h3>js高亮</h3>
         <pre><code data-language="javascript">exports.fileInit = function () {
     $(".monk-file").on({
         change: function () {
@@ -534,7 +530,7 @@
     });
 };</code></pre>
         <!--========分割线========-->
-        <h4>php高亮</h4>
+        <h3>php高亮</h3>
         <pre><code data-language="php">namespace app\index\controller;
 class Index
 {
@@ -544,7 +540,7 @@ class Index
     }
 }</code></pre>
         <!--========分割线========-->
-        <h4>C#高亮</h4>
+        <h3>C#高亮</h3>
         <pre><code data-language="csharp">using Microsoft.Owin;
 using Owin;
 [assembly: OwinStartup(typeof(Monk.App_Start.Startup))]
@@ -559,7 +555,7 @@ namespace Monk.App_Start
     }
 }</code></pre>
         <!--========分割线========-->
-        <h4>Java高亮</h4>
+        <h3>Java高亮</h3>
         <pre><code data-language="java">public static void insertionSort(int[] data) {
     for (int index = 1; index < data.length; index++) {
         int key = data[index];
@@ -573,12 +569,73 @@ namespace Monk.App_Start
     }
 }</code></pre>
         <!--========分割线========-->
-        <h4>sql高亮</h4>
+        <h3>sql高亮</h3>
         <pre><code data-language="sql">select * from web where site='http://www.baisoft.org/'</code></pre>
         <!--========分割线========-->
+        <h2>Editor.md 编辑器</h2>
+        <h3>代码编辑器（HTML 代码编辑器）</h3>
+        <div class="monk-form-item">
+            <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
+            <div class="monk-form-wrap monk-form-editormd-wrap monk-full">
+                <div id="monk-form-html-code"></div>
+            </div>
+            <div class="monk-form-tip">写点什么描述一下</div>
+        </div>
+        <!--========分割线========-->
+        <h3>更多类型代码编辑器，只需要修改 初始化脚本的 <label class="monk-color-peterriver">mode参数即可</label></h3>
+        <pre><code data-language="javascript">htmlcode = editormd("monk-form-html-code", {
+    autoFocus: false,
+    name: "HtmlCode",
+    width: "100%",
+    height: 300,
+    watch: false,
+    toolbar: false,
+    codeFold: true,
+    searchReplace: true,
+    placeholder: "试试写写代码吧！",
+    value: "",
+    mode: "text/html",  // 修改这里即可变更为该语言的编辑器，目前支持（"text/html", "javascript", "php", "text/xml", "text/json", "clike", "javascript", "perl", "go", "python", "clike", "css", "ruby"）参数
+    path: 'libs/editor.md-v1.5.0/lib/'
+});</code></pre>
+        <!--========分割线========-->
+        <h3>非常强大的Markdown编辑器</h3>
+        <a target="_blank" href="markdown.html" style="font-size:16px;">跳转查看</a>
         <h1>更多功能，整理开发中。。。。</h1>
     </div>
     <script src="libs/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <script src="monk.ui.min.js"></script>
+    <!--Rainbow.js依赖库-->
+    <!--样式-->
+    <link href="libs/rainbow-v2.1.2/themes/css/github.css" rel="stylesheet" />
+    <!--脚本-->
+    <script src="libs/rainbow-v2.1.2/rainbow-custom.min.js"></script>
+    <!--Rainbow.js依赖库结束-->
+    <!--===========================================-->
+    <!--Editor.md 依赖库-->
+    <!--样式-->
+    <link href="libs/editor.md-v1.5.0/css/editormd.css" rel="stylesheet" />
+    <!--脚本-->
+    <!--Editro.md 依赖库结束-->
+    <script src="libs/editor.md-v1.5.0/editormd.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var htmlcode;
+        $(function () {
+            // html代码编辑器
+            htmlcode = editormd("monk-form-html-code", {
+                autoFocus: false,
+                name: "HtmlCode",
+                width: "100%",
+                height: 300,
+                watch: false,
+                toolbar: false,
+                codeFold: true,
+                searchReplace: true,
+                placeholder: "试试写写HTML代码吧！",
+                value: "",
+                mode: "text/html",
+                path: 'libs/editor.md-v1.5.0/lib/'
+            });
+        });
+    </script>
 </body>
 </html>

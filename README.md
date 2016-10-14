@@ -7,7 +7,7 @@
 - 原创作者：`百小僧`
 - 开源协议：`MIT License`
 - 开发时间：`2016年10月13日`
-- 项目版本：`0.1.0`
+- 项目版本：`0.1.1`
 - 项目名称：`Monk.UI`
 - 版权所有：[百签软件（中山）有限公司](http://www.baisoft.org)
 - 联系方式：QQ群：`123049073`，作者QQ：`8020292`
@@ -796,6 +796,114 @@ namespace Monk.App_Start
 <pre><code data-language="sql">select * from web where site='http://www.baisoft.org/'</code></pre>
 ```
 
+#### Editor.md 编辑器
+
+- 依赖库
+
+```html
+<!--样式-->
+<link href="libs/editor.md-v1.5.0/css/editormd.css" rel="stylesheet" />
+<!--脚本-->
+<script src="libs/editor.md-v1.5.0/editormd.js" type="text/javascript"></script>
+```
+
+- 变身代码编辑器
+
+```html
+<div class="monk-form-item">
+    <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
+    <div class="monk-form-wrap monk-form-editormd-wrap monk-full">
+        <div id="monk-form-html-code"></div>
+    </div>
+    <div class="monk-form-tip">写点什么描述一下</div>
+</div>
+```
+
+```javascript
+var htmlcode;
+$(function () {
+    // html代码编辑器
+    htmlcode = editormd("monk-form-html-code", {
+        autoFocus: false,
+        name: "HtmlCode",
+        width: "100%",
+        height: 300,
+        watch: false,
+        toolbar: false,
+        codeFold: true,
+        searchReplace: true,
+        placeholder: "试试写写HTML代码吧！",
+        value: "",
+        mode: "text/html", // 修改这里即可变更为该语言的编辑器，目前支持（"text/html", "javascript", "php", "text/xml", "text/json", "clike", "javascript", "perl", "go", "python", "clike", "css", "ruby"）参数
+        path: 'libs/editor.md-v1.5.0/lib/'
+    });
+});
+```
+
+- 非常强大的 Markdown 编辑器
+
+```html
+<div class="monk-form-item">
+    <label for="" class="monk-form-label monk-color-peterriver">Markdown 编辑器（<a href="https://pandao.github.io/editor.md/examples/full.html" target="_blank">全部功能教程</a>）</label>
+    <div class="monk-form-wrap monk-form-editormd-wrap monk-full">
+        <div id="monk-form-markdown"></div>
+    </div>
+    <div class="monk-form-tip">写点什么描述一下</div>
+</div>
+```
+
+```javascript
+var testEditor;
+$(function () {
+    // markdown编辑器
+    testEditor = editormd("monk-form-markdown", {
+        placeholder: "亲，写点什么吧，比如：百签软件（中山）有限公司",
+        width: "100%",
+        height: 740,
+        path: 'libs/editor.md-v1.5.0/lib/',
+        //theme: "default",
+        //previewTheme: "default",
+        //editorTheme: "default",
+        markdown: "",
+        codeFold: true,
+        //syncScrolling : false,
+        saveHTMLToTextarea: true,    // 保存 HTML 到 Textarea
+        searchReplace: true,
+        //watch : false,                // 关闭实时预览
+        htmlDecode: "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
+        //toolbar  : false,             //关闭工具栏
+        //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
+        emoji: true,
+        taskList: true,
+        tocm: true,         // Using [TOCM]
+        tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+        flowChart: true,             // 开启流程图支持，默认关闭
+        sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+        //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
+        //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
+        //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
+        //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
+        //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
+        imageUpload: true,
+        imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+        imageUploadURL: "./php/upload.php",
+        onload: function () {
+            console.log('onload', this);
+            //this.fullscreen();
+            //this.unwatch();
+            //this.watch().fullscreen();
+
+            //this.setMarkdown("#PHP");
+            //this.width("100%");
+            //this.height(480);
+            //this.resize("100%", 640);
+        }
+    });
+    // 设置图标
+    editormd.emoji.path = "libs/editor.md-v1.5.0/emojis/";
+    editormd.twemoji.path = "libs/editor.md-v1.5.0/twemoji/36x36/";
+});
+```
 
 ### 更多功能，整理开发中。。。。
 
