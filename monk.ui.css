@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.css
- * version: 0.1.1
+ * version: 0.1.2
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -14,7 +14,7 @@ h1 { font-size: 2em; margin: .67em 0; }
 figcaption, figure, main { display: block; }
 figure { margin: 1em 40px; }
 hr { box-sizing: content-box; height: 0; overflow: visible; }
-pre { font-family: monospace,monospace; font-size: 1em; }
+pre { font-family: monospace,monospace; font-size: 1em; /*自定义*/ overflow: auto; }
 a { background-color: transparent; -webkit-text-decoration-skip: objects; }
 a:active, a:hover { outline-width: 0; }
 abbr[title] { border-bottom: none; text-decoration: underline; text-decoration: underline dotted; }
@@ -158,6 +158,7 @@ template { display: none; }
 /*下拉列表*/
 .monk-form-select { height: 200px; width: 282px; border: 1px solid #e6e6e6; position: absolute; left: 0; top: 64px; background: #fff; right: 0; z-index: 100; border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; overflow: auto; }
 .monk-form-select.monk-none { display: none; }
+.monk-form-wrap.monk-form-select-wrap .monk-iconfont.monk-select-arrow { cursor: pointer; pointer-events: auto; }
 .monk-form-wrap.monk-form-select-wrap .monk-iconfont.monk-select-arrow:before { content: "\e606"; }
 .monk-form-wrap.monk-form-select-wrap.focus .monk-iconfont.monk-select-arrow:before { content: "\e602"; }
 .monk-form-option, .monk-form-optgroup { height: 40px; padding: 0 10px; line-height: 40px; font-size: 14px; }
@@ -180,14 +181,15 @@ template { display: none; }
 .monk-form-time-btn { height: 40px; border-top: 1px solid #e6e6e6; font-size: 14px; color: #3498db; cursor: pointer; position: absolute; width: 100%; bottom: 0; left: 0; right: 0; }
 .monk-form-time-btn span { display: block; float: left; width: 50%; text-align: center; height: 40px; line-height: 40px; }
 .monk-form-time-btn span:first-child { border-right: 1px solid #e6e6e6; }
+.monk-form-wrap.monk-form-time-wrap .monk-iconfont.icon-monk-time { cursor: pointer; pointer-events: auto; }
 
 /*文件选择*/
 .monk-form-image-wrap { border: none; position: relative; }
-.monk-form-image-wrap .monk-input-button { margin-right: 0; cursor: pointer; }
+.monk-form-image-wrap .monk-input-button { margin-right: 0; cursor: pointer; margin-top: 0 !important; }
 .monk-file { position: absolute; top: 0; left: 0; z-index: 10; right: 0; bottom: 0; height: 100%; width: 100%; border: none; outline: none; background: transparent; opacity: 0.01; cursor: pointer; color: transparent; }
 
 /*按钮*/
-.monk-input-button { text-decoration: none; font-size: 14px; display: inline-block; color: #444; background: #fff; border-radius: 3px; white-space: nowrap; padding: 12px 20px; margin-right: 15px; vertical-align: middle; text-align: center; border: none; outline: none; cursor: pointer; }
+.monk-input-button { text-decoration: none; font-size: 14px; display: inline-block; color: #444; background: #fff; border-radius: 3px; white-space: nowrap; padding: 12px 20px; margin-right: 15px; vertical-align: middle; text-align: center; border: none; outline: none; cursor: pointer; margin-top: 10px; }
 .monk-input-button.turquoise { background: #1ABC9C; color: #fff; }
 .monk-input-button.turquoise:hover { background: #1dd2af; }
 .monk-input-button.emerland { background: #2ECC71; color: #fff; }

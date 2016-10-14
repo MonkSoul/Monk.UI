@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.1.1
+ * version: 0.1.2
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -19,7 +19,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.1.1";
+    exports.v = "0.1.2";
 
     // 文本框初始化
     exports.inputInit = function () {
@@ -412,6 +412,25 @@
             }
         });
 
+        // 点击图标
+        $(".monk-select-arrow").on({
+            mousedown: function () {
+                var input = $(this).siblings(".monk-form-input");
+                var readonly = input.attr("readonly");
+                var disabled = input.attr("disabled");
+                if (readonly != "readonly" && disabled != "disabled") {
+                    if ($(this).parent(".monk-form-wrap").next(".monk-form-select").hasClass("monk-none")) {
+                        setTimeout(function () {
+                            input.focus();
+                        }, 100);
+                    }
+                    else {
+                        input.blur();
+                    }
+                }
+            }
+        });
+
         $(".monk-select").on({
             change: function () {
                 var value = $(this).val();
@@ -627,6 +646,22 @@
         _timeSecond.on({
             click: function () {
                 selectTime($(this), "second");
+            }
+        });
+
+
+        // 点击图标
+        $(".icon-monk-time").on({
+            mousedown: function () {
+                var input = $(this).siblings(".monk-form-input");
+                var disabled = input.attr("disabled");
+                if (disabled != "disabled") {
+                    if ($(this).parent(".monk-form-wrap").next(".monk-form-time").hasClass("monk-none")) {
+                        setTimeout(function () {
+                            input.focus();
+                        }, 100);
+                    }
+                }
             }
         });
     };
