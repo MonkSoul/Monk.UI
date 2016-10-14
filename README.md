@@ -703,6 +703,12 @@
 <a class="monk-input-button turquoise"><span class="monk-iconfont icon-monk-time"></span>图标按钮</a>
 ```
 
+- 禁用按钮
+
+```html
+<button class="monk-input-button emerland" disabled="disabled">禁用按钮</button>
+```
+
 ### 第三方插件
 
 #### rainbow.js 代码高亮
