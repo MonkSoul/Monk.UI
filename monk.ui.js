@@ -1,12 +1,11 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.1.3
+ * version: 0.2.0
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
  * https://github.com/MonkSoul/Monk.UI/
  */
-
 ; !function (factory) {
     "use strict";
     if (typeof require === 'function' && typeof exports === 'object' && typeof module === 'object') {
@@ -19,442 +18,303 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.1.3";
-
-    // 文本框初始化
+    exports.v = "0.2.0";
+    // 初始化文本框
     exports.inputInit = function () {
-        // 文本框
-        var _input = $(".monk-form-input,.monk-form-textarea");
-        _input.each(function () {
-            if ($(this).siblings(".monk-iconfont.icon-monk-required").length > 0) {
-                $(this).siblings(".monk-iconfont.icon-monk-required").eq(0).css("right", "-40px");
-            }
-        });
-
-        _input.on({
-            focus: function () {
-                $(this).parent(".monk-form-wrap").addClass("focus");
-                // 选中文本
-                $(this).select();
-            },
-            blur: function () {
-                if (!$(this).parent(".monk-form-wrap").hasClass("monk-form-time-wrap")) {
-                    $(this).parent(".monk-form-wrap").removeClass("focus");
-                }
-            },
-            keyup: function () {
-                var clearInput = $(this).siblings(".monk-clear-input");
-                if (clearInput) {
-                    if ($.trim($(this).val()) !== "") {
-                        clearInput.css({ "visibility": "visible" });
-                        if ($(this).siblings(".monk-iconfont.icon-monk-required").length > 0) {
-                            $(this).siblings(".monk-iconfont.icon-monk-required").eq(0).css("right", "0");
-                        }
-                    }
-                    else {
-                        clearInput.css({ "visibility": "hidden" });
-                        if ($(this).siblings(".monk-iconfont.icon-monk-required").length > 0) {
-                            $(this).siblings(".monk-iconfont.icon-monk-required").eq(0).css("right", "-40px");
-                        }
-                    }
+        var inputs = document.querySelectorAll(".monk-form-input,.monk-form-textarea");
+        // 设置必填图标位置
+        function setRequireIconOffset(parent, init) {
+            var requireIcon = parent.querySelector(".monk-iconfont.icon-monk-required");
+            var clearBtn = parent.querySelector(".monk-clear-input");
+            if (requireIcon && clearBtn) {
+                if (init) {
+                    var width = requireIcon.offsetWidth;
+                    var parentWidth = parent.offsetWidth - 2;
+                    var offsetLeft = requireIcon.offsetLeft;
+                    requireIcon.style.right = -(parentWidth - offsetLeft - width) + "px";
+                } else {
+                    requireIcon.style.right = "0px";
                 }
             }
-        });
-
-        $(".monk-clear-input").on({
-            click: function () {
-                $(this).css({ "visibility": "hidden" });
-                $(this).siblings(".monk-form-input,.monk-form-textarea").each(function () {
-                    var readonly = $(this).attr("readonly");
-                    var disabled = $(this).attr("disabled");
-                    if (readonly != "readonly" && disabled != "disabled") {
-                        $(this).val("");
+        }
+        // 初始化文本框并绑定事件
+        Array.prototype.forEach.call(inputs, function (input, i) {
+            // 初始化关闭按钮和必填位置问题
+            var parent = input.parentNode;
+            setRequireIconOffset(parent, true);
+            // 绑定focus事件
+            input.addEventListener("focus", function () {
+                var parent = this.parentNode;
+                parent.classList.add("focus");
+            });
+            ;// 绑定blur事件
+            input.addEventListener("blur", function () {
+                var parent = this.parentNode;
+                if (!parent.classList.contains("monk-form-time-wrap")) {
+                    parent.classList.remove("focus");
+                }
+            });
+            ;// 绑定keyup事件
+            input.addEventListener("keyup", function () {
+                var parent = this.parentNode;
+                var value = this.value.trim();
+                var clearBtn = parent.querySelector(".monk-clear-input");
+                if (clearBtn) {
+                    if (value != "") {
+                        clearBtn.style.cssText = "visibility:visible;";
+                        setRequireIconOffset(parent);
+                    } else {
+                        clearBtn.style.cssText = "visibility:hidden;";
+                        setRequireIconOffset(parent, true);
                     }
+                }
+            });
+            ; var clearBtn = input.parentNode.querySelector(".monk-clear-input");
+            if (clearBtn) {
+                // 绑定关闭按钮
+                clearBtn.addEventListener("click", function () {
+                    var parent = this.parentNode;
+                    var input = parent.querySelector(".monk-form-input");
+                    input.value = "";
+                    setRequireIconOffset(parent, true);
+                    this.style.cssText = "visibility:hidden;";
                 });
-                if ($(this).siblings(".monk-iconfont.icon-monk-required").length > 0) {
-                    $(this).siblings(".monk-iconfont.icon-monk-required").eq(0).css("right", "-40px");
-                }
+                ;
             }
         });
-    };
-
-    // 复选框初始化
-    exports.checkboxInit = function () {
-        $(".monk-form-checkbox-list").each(function () {
-            var that = $(this);
-            var html = "";
-            $(this).children(".monk-checkbox").each(function () {
-                var value = $(this).val();
-                var text = $(this).attr("text");
-                var checked = $(this).attr("checked");
-                var readonly = $(this).attr("readonly");
-                var disabled = $(this).attr("disabled");
-                var name = $(this).attr("name");
-
-
-                var valueHtml = value ? 'data-value="' + value + '"' : 'data-value=""';
-                var nameHtml = name ? 'data-name="' + name + '" ' : '';
-                var textHtml = text ? text : "value";
-                var checkedHtml = checked ? 'checked="checked"' : '';
-                var readonlyHtml = readonly ? 'readonly="readonly"' : '';
-                var disabledHtml = disabled ? 'disabled="disabled"' : '';
-
-                html += '<div class="monk-form-wrap monk-form-checkbox-wrap" ' + nameHtml + ' ' + checkedHtml + ' ' + readonlyHtml + ' ' + disabledHtml + ' ' + valueHtml + '>';
-                html += '<span class="monk-form-checkbox">' + textHtml + '</span>';
-                html += '<span class="monk-iconfont border-left icon-monk-dagou"></span>';
-                html += '</div>\r\n';
+    }();
+    // 生成checkbox，radio，switch
+    exports.createCheckboxRadio = function (arr) {
+        if (arr.length > 0) {
+            // 获取类型
+            var type = arr[0];
+            // 移除
+            arr.splice(0, 1);
+            var all = document.querySelectorAll(".monk-form-" + type + "-list");
+            // 初始化HTML并绑定事件
+            Array.prototype.forEach.call(all, function (list, i) {
+                var html = "";
+                // 获取所有的选项
+                var items = list.querySelectorAll(".monk-" + type);
+                Array.prototype.forEach.call(items, function (item, i) {
+                    var name = item.getAttribute("name");
+                    var value = item.value;
+                    var text = item.getAttribute("text");
+                    var checked = item.getAttribute("checked");
+                    var readonly = item.getAttribute("readonly");
+                    var disabled = item.getAttribute("disabled");
+                    var valueHtml = value ? 'data-value="' + value + '"' : 'data-value=""';
+                    var nameHtml = name ? 'data-name="' + name + '" ' : '';
+                    var textHtml = text ? text : "value";
+                    var checkedHtml = checked ? 'checked="checked"' : '';
+                    var readonlyHtml = readonly ? 'readonly="readonly"' : '';
+                    var disabledHtml = disabled ? 'disabled="disabled"' : '';
+                    html += '<div class="monk-form-wrap monk-form-' + type + '-wrap" ' + nameHtml + ' ' + checkedHtml + ' ' + readonlyHtml + ' ' + disabledHtml + ' ' + valueHtml + '>';
+                    if (type == "checkbox" || type == "switch") {
+                        html += '<span class="monk-' + type + '-text">' + textHtml + '</span>';
+                        html += '<span class="monk-iconfont border-left icon-monk-dagou"></span>';
+                    } else if (type == "radio") {
+                        html += '<span class="monk-iconfont icon-monk-radio"></span>';
+                        html += '<span class="monk-radio-text">' + textHtml + '</span>';
+                    }
+                    html += '</div>\r\n';
+                    // 设置只读
+                    item.addEventListener("click", function () {
+                        var readonly = this.getAttribute("readonly");
+                        if (readonly) {
+                            return false;
+                        }
+                    });
+                    ;// 绑定改变事件
+                    item.addEventListener("change", function () {
+                        var name = this.getAttribute("name");
+                        var value = this.value;
+                        var parent = this.parentNode;
+                        var wrap = parent.querySelector(".monk-form-" + type + "-wrap[data-name='" + name + "'][data-value='" + value + "']");
+                        if (this.checked == true) {
+                            if (type == "radio") {
+                                var lastWrap = parent.querySelector(".monk-form-radio-wrap[checked='checked']");
+                                if (lastWrap !== wrap) {
+                                    lastWrap.removeAttribute("checked");
+                                    wrap.setAttribute("checked", "checked");
+                                }
+                            } else {
+                                wrap.setAttribute("checked", "checked");
+                            }
+                        } else {
+                            if (type != "radio") {
+                                wrap.removeAttribute("checked");
+                            }
+                        }
+                    });
+                    ;
+                });
+                // 生成HTML代码
+                list.insertAdjacentHTML("afterbegin", html);
+                // 获取所有的wrap
+                var wraps = list.querySelectorAll(".monk-form-" + type + "-wrap");
+                Array.prototype.forEach.call(wraps, function (wrap, i) {
+                    // 绑定点击事件
+                    wrap.addEventListener("click", function () {
+                        var checked = this.getAttribute("checked");
+                        var readonly = this.getAttribute("readonly");
+                        var disabled = this.getAttribute("disabled");
+                        var name = this.getAttribute("data-name");
+                        var value = this.getAttribute("data-value");
+                        if (readonly != "readonly" && disabled != "disabled") {
+                            var parent = this.parentNode;
+                            var box = parent.querySelector(".monk-" + type + "[name='" + name + "'][value='" + value + "']");
+                            if (type == "radio") {
+                                var lastWrap = parent.querySelector(".monk-form-" + type + "-wrap[checked='checked']");
+                                if (lastWrap !== this) {
+                                    lastWrap.removeAttribute("checked");
+                                }
+                                this.setAttribute("checked", "checked");
+                                box.checked = true;
+                            } else {
+                                if (checked == "checked") {
+                                    this.removeAttribute("checked");
+                                    box.checked = false;
+                                } else {
+                                    this.setAttribute("checked", "checked");
+                                    box.checked = true;
+                                }
+                            }
+                        }
+                    });
+                    ;
+                });
             });
-
-            that.prepend(html);
-        });
-
-        // 复选框
-        var _checkbox = $(".monk-form-checkbox-wrap");
-        _checkbox.on({
-            click: function () {
-                var readonly = $(this).attr("readonly");
-                var disabled = $(this).attr("disabled");
-                var name = $(this).attr("data-name");
-                var value = $(this).attr("data-value");
-
-                if (readonly != "readonly" && disabled != "disabled") {
-                    var checkbox = $(this).siblings(".monk-checkbox[name='" + name + "'][value='" + value + "']").eq(0);
-                    if ($(this).attr("checked") == "checked") {
-                        $(this).removeAttr("checked");
-                        checkbox.prop("checked", false);
-                    }
-                    else {
-                        $(this).attr("checked", "checked");
-                        checkbox.prop("checked", true);
-                    }
-                }
-            }
-        });
-
-        // 绑定状态改变事件
-        $(".monk-checkbox").on({
-            change: function () {
-                var name = $(this).attr("name");
-                var value = $(this).attr("value");
-                var niceObj = $(this).siblings(".monk-form-checkbox-wrap[data-name='" + name + "'][data-value='" + value + "']").eq(0);
-                if ($(this).is(":checked")) {
-                    niceObj.attr("checked", "checked");
-                }
-                else {
-                    niceObj.removeAttr("checked");
-                }
-            },
-            click: function () {
-                var readonly = $(this).attr("readonly");
-                if (readonly) {
-                    return false;
-                }
-            },
-            focus: function () {
-                var name = $(this).attr("name");
-                var value = $(this).attr("value");
-                var niceObj = $(this).siblings(".monk-form-checkbox-wrap[data-name='" + name + "'][data-value='" + value + "']").eq(0);
-                niceObj.addClass("focus");
-            },
-            blur: function () {
-                var name = $(this).attr("name");
-                var value = $(this).attr("value");
-                var niceObj = $(this).siblings(".monk-form-checkbox-wrap[data-name='" + name + "'][data-value='" + value + "']").eq(0);
-                niceObj.removeClass("focus");
-            }
-        });
-    };
-
-
-    // 切换初始化
-    exports.switchInit = function () {
-        $(".monk-form-switch-list").each(function () {
-            var that = $(this);
-            var html = "";
-            $(this).children(".monk-switch").each(function () {
-                var text = $(this).attr("text");
-                var value = $(this).val();
-                var checked = $(this).attr("checked");
-                var readonly = $(this).attr("readonly");
-                var disabled = $(this).attr("disabled");
-                var name = $(this).attr("name");
-
-
-                var valueHtml = value ? 'data-value="' + value + '"' : 'data-value=""';
-                var nameHtml = name ? 'data-name="' + name + '" ' : '';
-                var checkedHtml = checked ? 'checked="checked"' : '';
-                var readonlyHtml = readonly ? 'readonly="readonly"' : '';
-                var disabledHtml = disabled ? 'disabled="disabled"' : '';
-
-                html += '<div class="monk-form-wrap monk-form-switch-wrap" ' + nameHtml + ' ' + checkedHtml + ' ' + readonlyHtml + ' ' + disabledHtml + ' ' + valueHtml + '>';
-                html += '<span class="monk-switch-text">' + text + '</span>';
-                html += '<span class="monk-iconfont border-right icon-monk-dacha"></span>';
-                html += '</div>\r\n';
-            });
-
-            that.prepend(html);
-        });
-
-        // 切换框
-        var _switch = $(".monk-form-switch-wrap");
-        _switch.on({
-            click: function () {
-                var readonly = $(this).attr("readonly");
-                var disabled = $(this).attr("disabled");
-                var name = $(this).attr("data-name");
-                var value = $(this).attr("data-value");
-                if (readonly != "readonly" && disabled != "disabled") {
-                    var switchbox = $(this).siblings(".monk-switch[name='" + name + "'][value='" + value + "']").eq(0);
-                    if ($(this).attr("checked") == "checked") {
-                        $(this).removeAttr("checked");
-                        switchbox.prop("checked", false);
-                    }
-                    else {
-                        $(this).attr("checked", "checked");
-                        switchbox.prop("checked", true);
-                    }
-                }
-            }
-        });
-
-        // 绑定状态改变事件
-        $(".monk-switch").on({
-            change: function () {
-                var name = $(this).attr("name");
-                var value = $(this).attr("value");
-                var niceObj = $(this).siblings(".monk-form-switch-wrap[data-name='" + name + "'][data-value='" + value + "']").eq(0);
-                if ($(this).is(":checked")) {
-                    niceObj.attr("checked", "checked");
-                }
-                else {
-                    niceObj.removeAttr("checked");
-                }
-            },
-            click: function () {
-                var readonly = $(this).attr("readonly");
-                if (readonly) {
-                    return false;
-                }
-            },
-            focus: function () {
-                var name = $(this).attr("name");
-                var value = $(this).attr("value");
-                var niceObj = $(this).siblings(".monk-form-switch-wrap[data-name='" + name + "'][data-value='" + value + "']").eq(0);
-                niceObj.addClass("focus");
-            },
-            blur: function () {
-                var name = $(this).attr("name");
-                var value = $(this).attr("value");
-                var niceObj = $(this).siblings(".monk-form-switch-wrap[data-name='" + name + "'][data-value='" + value + "']").eq(0);
-                niceObj.removeClass("focus");
-            }
-        });
-    };
-
-    // 单选框初始化
-    exports.radioInit = function () {
-        $(".monk-form-radio-list").each(function () {
-            var that = $(this);
-            var html = "";
-            $(this).children(".monk-radio").each(function () {
-                var value = $(this).val();
-                var text = $(this).attr("text");
-                var checked = $(this).attr("checked");
-                var readonly = $(this).attr("readonly");
-                var disabled = $(this).attr("disabled");
-                var name = $(this).attr("name");
-
-
-                var valueHtml = value ? 'data-value="' + value + '"' : 'data-value=""';
-                var nameHtml = name ? 'data-name="' + name + '" ' : '';
-                var textHtml = text ? text : "value";
-                var checkedHtml = checked ? 'checked="checked"' : '';
-                var readonlyHtml = readonly ? 'readonly="readonly"' : '';
-                var disabledHtml = disabled ? 'disabled="disabled"' : '';
-
-                html += '<div class="monk-form-wrap monk-form-radio-wrap" ' + nameHtml + ' ' + checkedHtml + ' ' + readonlyHtml + ' ' + disabledHtml + ' ' + valueHtml + '>';
-                html += '<span class="monk-iconfont icon-monk-radio"></span>';
-                html += '<span class="monk-form-radio">' + textHtml + '</span>';
-                html += '</div>\r\n';
-            });
-
-            that.prepend(html);
-        });
-
-        // 单选框
-        var _radio = $(".monk-form-radio-wrap");
-        _radio.on({
-            click: function () {
-                var readonly = $(this).attr("readonly");
-                var disabled = $(this).attr("disabled");
-                var name = $(this).attr("data-name");
-                var value = $(this).attr("data-value");
-                if (readonly != "readonly" && disabled != "disabled") {
-                    var radio = $(this).siblings(".monk-radio[name='" + name + "'][value='" + value + "']").eq(0);
-                    $(this).attr("checked", "checked").siblings(".monk-form-radio-wrap[data-name='" + name + "']").removeAttr("checked");
-                    radio.prop("checked", true);
-                }
-            }
-        });
-
-        // 绑定状态改变事件
-        $(".monk-radio").on({
-            click: function () {
-                var readonly = $(this).attr("readonly");
-                if (readonly) {
-                    return false;
-                }
-                var name = $(this).attr("name");
-                var value = $(this).attr("value");
-                var niceObj = $(this).siblings(".monk-form-radio-wrap[data-name='" + name + "'][data-value='" + value + "']").eq(0);
-                if ($(this).is(":checked")) {
-                    niceObj.attr("checked", "checked").siblings(".monk-form-radio-wrap[data-name='" + name + "']").removeAttr("checked");;
-                }
-            },
-            focus: function () {
-                var name = $(this).attr("name");
-                var value = $(this).attr("value");
-                var niceObj = $(this).siblings(".monk-form-radio-wrap[data-name='" + name + "'][data-value='" + value + "']").eq(0);
-                niceObj.addClass("focus");
-            },
-            blur: function () {
-                var name = $(this).attr("name");
-                var value = $(this).attr("value");
-                var niceObj = $(this).siblings(".monk-form-radio-wrap[data-name='" + name + "'][data-value='" + value + "']").eq(0);
-                niceObj.removeClass("focus");
-            }
-        });
-    };
-
+            arguments.callee(arr);
+        }
+    }(["checkbox", "switch", "radio"]);
     // 初始化下拉
     exports.selectInit = function () {
-        $(".monk-form-select").each(function () {
-            var that = $(this);
+        var all = document.querySelectorAll(".monk-form-select");
+        // 初始化HTML并绑定事件
+        Array.prototype.forEach.call(all, function (list, i) {
+            // 设置宽度
+            var selectWrap = list.parentNode.querySelector(".monk-form-select-wrap");
+            list.style.width = selectWrap.offsetWidth + "px";
             var html = "";
-            that.find(".monk-select").children().each(function () {
-                if ($(this).is("option")) {
-                    var text = $(this).text();
-                    var value = $(this).attr("value");
-                    html += '<div class="monk-form-option" data-value="' + value + '">' + text + '</div>';
-                }
-                else if ($(this).is("optgroup")) {
-                    var label = $(this).attr("label");
+            // 获取所有的选项
+            var items = list.querySelectorAll(".monk-select *");
+            Array.prototype.forEach.call(items, function (item, i) {
+                if (item.tagName.toLowerCase() == "option") {
+                    var text = item.textContent;
+                    var value = item.getAttribute("value");
+                    html += '<div class="monk-form-option" data-value="' + value + '" data-text="' + text + '">' + text + '</div>';
+                } else if (item.tagName.toLowerCase() == "optgroup") {
+                    var label = item.getAttribute("label");
                     html += '<div class="monk-form-optgroup" data-value="' + value + '">' + label + '</div>';
                 }
             });
-            that.prepend(html);
-
-            // 设置选中的option
-            var select = that.children(".monk-select");
-            var selectedOption = select.children("option:selected");
-            var value = select.val();
-            var text = selectedOption.text();
-            var niceOption = $(this).children(".monk-form-option[data-value='" + value + "']:contains(" + text + ")").eq(0);
-            niceOption.attr("selected", "selected").siblings(".monk-form-option").removeAttr("selected");
-
-            var input = select.parent().prev(".monk-form-select-wrap").children(".monk-form-input");
-            input.val(text);
+            // 生成HTML代码
+            list.insertAdjacentHTML("afterbegin", html);
+            // 设置默认选中
+            var select = list.querySelector(".monk-select");
+            var option = select.querySelectorAll("option")[select.selectedIndex];
+            var selectValue = option.value;
+            var selectText = option.textContent;
+            list.querySelector(".monk-form-option[data-value='" + selectValue + "']").setAttribute("selected", "selected");
+            list.parentNode.querySelector(".monk-form-select-wrap .monk-form-input").value = selectText;
+            // 绑定事件
+            var options = list.querySelectorAll(".monk-form-option");
+            Array.prototype.forEach.call(options, function (option, i) {
+                option.addEventListener("mousedown", function () {
+                    var value = this.getAttribute("data-value");
+                    var text = this.textContent;
+                    var parent = this.parentNode;
+                    var scrollTop = this.offsetTop;
+                    var select = parent.querySelector(".monk-select");
+                    var input = parent.parentNode.querySelector(".monk-form-input");
+                    var readonly = input.getAttribute("readonly");
+                    if (!readonly) {
+                        if (value != "") {
+                            var lastWrap = this.parentNode.querySelector(".monk-form-option[selected='selected']");
+                            if (lastWrap !== this && lastWrap) {
+                                lastWrap.removeAttribute("selected");
+                            }
+                            this.setAttribute("selected", "selected");
+                            input.value = text;
+                            parent.scrollTop = scrollTop;
+                            select.value = value;
+                        }
+                    }
+                });
+                ;
+            });
         });
-
-        // 搜索下拉
-        function _selectInputSearch(that) {
-            var value = $.trim(that.val());
-            var select = that.parent(".monk-form-select-wrap").next(".monk-form-select");
-            var option = select.children(".monk-form-option:contains(" + value + ")");
-            if (option && option.eq(0)) {
-                var scrollTop = option.eq(0).position().top;
-                select.animate({
-                    scrollTop: select.scrollTop() + scrollTop
-                }, 0);
+        function searchText(that) {
+            var value = that.value;
+            var parent = that.parentNode;
+            var select = parent.parentNode.querySelector(".monk-form-select");
+            var option = select.querySelector(".monk-form-option[data-text*='" + value + "']");
+            if (option) {
+                select.scrollTop = option.offsetTop;
             }
         }
-
-        // 下拉框
-        var _selectInput = $(".monk-form-select-wrap .monk-form-input");
-        var _selectOption = $(".monk-form-option");
-        _selectInput.on({
-            focus: function () {
-                var inputWrap = $(this).parent(".monk-form-select-wrap");
-                var readonly = $(this).attr("readonly");
-                if (readonly != "readonly") {
-                    inputWrap.next(".monk-form-select").removeClass("monk-none");
-                }
-
-                _selectInputSearch($(this));
-            },
-            blur: function () {
-                var select = $(this).parent(".monk-form-select-wrap").next(".monk-form-select");
-                var option = select.children(".monk-form-option[selected='selected']");
-                $(this).val(option.text());
-
-                $(this).parent(".monk-form-select-wrap").next(".monk-form-select").addClass("monk-none");
-            },
-            keyup: function () {
-                _selectInputSearch($(this));
-            }
+        // 输入框绑定事件
+        var inputs = document.querySelectorAll(".monk-form-select-wrap .monk-form-input");
+        Array.prototype.forEach.call(inputs, function (input, i) {
+            // 绑定焦点事件
+            input.addEventListener("focus", function () {
+                var parent = this.parentNode;
+                var selectbox = parent.parentNode.querySelector(".monk-form-select");
+                selectbox.classList.remove("monk-none");
+                searchText(this);
+            });
+            ;// 失去焦点
+            input.addEventListener("blur", function () {
+                var parent = this.parentNode;
+                var selectbox = parent.parentNode.querySelector(".monk-form-select");
+                selectbox.classList.add("monk-none");
+            });
+            ;// 搜索
+            input.addEventListener("keyup", function () {
+                searchText(this);
+            });
+            ;
         });
-        _selectOption.on({
-            mousedown: function () {
-                var value = $(this).attr("data-value");
-                var text = $(this).text();
-                var select = $(this).parent(".monk-form-select");
-                var input = select.prev(".monk-form-select-wrap").children(".monk-form-input");
-                var scrollTop = $(this).position().top;
-
-                $(this).attr("selected", "selected").siblings(".monk-form-option").removeAttr("selected");
-                input.val(text);
-                select.animate({
-                    scrollTop: select.scrollTop() + scrollTop
-                }, 0);
-
-                var realySelect = select.children(".monk-select");
-                realySelect.val(value);
-            }
-        });
-
-        // 点击图标
-        $(".monk-select-arrow").on({
-            mousedown: function () {
-                var input = $(this).siblings(".monk-form-input");
-                var readonly = input.attr("readonly");
-                var disabled = input.attr("disabled");
-                if (readonly != "readonly" && disabled != "disabled") {
-                    if ($(this).parent(".monk-form-wrap").next(".monk-form-select").hasClass("monk-none")) {
+        // 下拉图标绑定事件
+        var selectIcons = document.querySelectorAll(".monk-select-arrow");
+        Array.prototype.forEach.call(selectIcons, function (icon, i) {
+            icon.addEventListener("mousedown", function () {
+                var input = this.parentNode.querySelector(".monk-form-select-wrap .monk-form-input");
+                var disabled = input.getAttribute("disabled");
+                var select = input.parentNode.parentNode.querySelector(".monk-form-select");
+                if (disabled != "disabled") {
+                    if (select.classList.contains("monk-none")) {
                         setTimeout(function () {
                             input.focus();
                         }, 100);
-                    }
-                    else {
+                    } else {
                         input.blur();
                     }
                 }
-            }
+            });
+            ;
         });
-
-        $(".monk-select").on({
-            change: function () {
-                var value = $(this).val();
-                var text = $(this).children("option:selected").text();
-
-                var parentSelect = $(this).parent(".monk-form-select");
-                var input = parentSelect.prev(".monk-form-select-wrap").children(".monk-form-input");
-                var option = $(this).siblings(".monk-form-option[data-value='" + value + "']:contains(" + text + ")").eq(0);
-                option.attr("selected", "selected").siblings(".monk-form-option").removeAttr("selected");
-                var scrollTop = option.position().top;
-                parentSelect.animate({
-                    scrollTop: parentSelect.scrollTop() + scrollTop
-                }, 0);
-                input.val(text);
-            },
-            focus: function () {
-                var parentSelect = $(this).parent(".monk-form-select");
-                var input = parentSelect.prev(".monk-form-select-wrap").children(".monk-form-input");
-                input.focus();
-            }
+        // 下拉绑定事件
+        var selects = document.querySelectorAll(".monk-select");
+        Array.prototype.forEach.call(selects, function (select, i) {
+            select.addEventListener("change", function () {
+                var option = this.querySelectorAll("option")[select.selectedIndex];
+                var selectValue = option.value;
+                var selectText = option.textContent;
+                var option = this.parentNode.querySelector(".monk-form-option[data-value='" + selectValue + "']");
+                var input = this.parentNode.parentNode.querySelector(".monk-form-select-wrap .monk-form-input")
+                var lastWrap = this.parentNode.querySelector(".monk-form-option[selected='selected']");
+                if (lastWrap !== this && lastWrap) {
+                    lastWrap.removeAttribute("selected");
+                }
+                option.setAttribute("selected", "selected");
+                input.value = selectText;
+                this.parentNode.scrollTop = option.offsetTop;
+            });
+            ;
         });
-    };
-
-
+    }();
     // 初始化时间
     exports.timeInit = function () {
         function createTimeTags() {
@@ -469,10 +329,9 @@
             // 生成小时
             for (var i = 0; i < 24; i++) {
                 if (i < 10) {
-                    html += '<span class="monk-form-time-hour">0' + i + '</span>';
-                }
-                else {
-                    html += '<span class="monk-form-time-hour">' + i + '</span>';
+                    html += '<span class="monk-form-time-hour" data-value="0' + i + '">0' + i + '</span>';
+                } else {
+                    html += '<span class="monk-form-time-hour" data-value="' + i + '">' + i + '</span>';
                 }
             }
             html += '</div>';
@@ -480,10 +339,9 @@
             // 生成分钟
             for (var i = 0; i < 60; i++) {
                 if (i < 10) {
-                    html += '<span class="monk-form-time-minute">0' + i + '</span>';
-                }
-                else {
-                    html += '<span class="monk-form-time-minute">' + i + '</span>';
+                    html += '<span class="monk-form-time-minute" data-value="0' + i + '">0' + i + '</span>';
+                } else {
+                    html += '<span class="monk-form-time-minute" data-value="' + i + '">' + i + '</span>';
                 }
             }
             html += '</div>';
@@ -491,203 +349,186 @@
             // 生成秒
             for (var i = 0; i < 60; i++) {
                 if (i < 10) {
-                    html += '<span class="monk-form-time-second">0' + i + '</span>';
-                }
-                else {
-                    html += '<span class="monk-form-time-second">' + i + '</span>';
+                    html += '<span class="monk-form-time-second" data-value="0' + i + '">0' + i + '</span>';
+                } else {
+                    html += '<span class="monk-form-time-second" data-value="' + i + '">' + i + '</span>';
                 }
             }
             html += '</div>';
             html += '</div>';
-            html += '<div class="monk-form-time-btn"><span>当前时间</span><span>关闭</span></div>';
+            html += '<div class="monk-form-time-btn"><span class="monk-time-current">当前时间</span><span class="monk-time-close">关闭</span></div>';
             html += '</div>';
             return html;
         }
-
-        // 开始生成
-        $(".monk-form-time-wrap").each(function () {
-            var input = $(this).children(".monk-form-input");
-            var value = input.val();
+        var wraps = document.querySelectorAll(".monk-form-time-wrap");
+        Array.prototype.forEach.call(wraps, function (wrap, i) {
+            var input = wrap.querySelector(".monk-form-input");
+            var value = input.value;
             if (!(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/.test(value))) {
-                input.val("00:00:00");
+                input.value = "00:00:00";
             }
-            $(this).after(createTimeTags());
+            // 生成HTML代码
+            wrap.insertAdjacentHTML("afterend", createTimeTags());
+            // 设置宽度
+            var timeWrap = wrap.parentNode.querySelector(".monk-form-time");
+            timeWrap.style.width = wrap.offsetWidth + "px";
         });
-
-        // 时间选择
-        var _timeInput = $(".monk-form-time-wrap .monk-form-input");
-        var _timeCurrentBtn = $(".monk-form-time-btn span:eq(0)");
-        var _timeBtn = $(".monk-form-time-btn span:eq(1)");
-        var _timeHour = $(".monk-form-time-hour");
-        var _timeMinute = $(".monk-form-time-minute");
-        var _timeSecond = $(".monk-form-time-second");
-        _timeInput.on({
-            focus: function () {
-                var timeObj = $(this).parent(".monk-form-time-wrap").next(".monk-form-time");
-                timeObj.removeClass("monk-none");
-                var value = $(this).val();
+        // 输入框绑定事件
+        var inputs = document.querySelectorAll(".monk-form-time-wrap .monk-form-input");
+        Array.prototype.forEach.call(inputs, function (input, i) {
+            // 绑定焦点事件
+            input.addEventListener("focus", function () {
+                var parent = this.parentNode;
+                var timebox = parent.parentNode.querySelector(".monk-form-time");
+                timebox.classList.remove("monk-none");
+                // 设置滚动
+                var value = this.value;
                 var timeArr = value.match(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/);
                 var time = timeArr[0];
                 var hour = timeArr[1];
                 var minute = timeArr[3];
                 var second = timeArr[4];
-                // 设置小时选中
-                var hourObj = timeObj.find(".monk-form-time-item .monk-form-time-hour:contains(" + hour + ")");
-                hourObj.addClass("selected").siblings(".monk-form-time-hour").removeClass("selected");
-                hourObj.parent().animate({
-                    scrollTop: hourObj.parent().scrollTop() + hourObj.position().top
-                }, 0);
-                // 设置分钟选中
-                var minuteObj = timeObj.find(".monk-form-time-item .monk-form-time-minute:contains(" + minute + ")");
-                minuteObj.addClass("selected").siblings(".monk-form-time-minute").removeClass("selected");
-                minuteObj.parent().animate({
-                    scrollTop: minuteObj.parent().scrollTop() + minuteObj.position().top
-                }, 0);
-                // 设置秒钟选中
-                var secondObj = timeObj.find(".monk-form-time-item .monk-form-time-second:contains(" + second + ")");
-                secondObj.addClass("selected").siblings(".monk-form-time-second").removeClass("selected");
-                secondObj.parent().animate({
-                    scrollTop: secondObj.parent().scrollTop() + secondObj.position().top
-                }, 0);
-            }
-        });
-        // 当前时间
-        _timeCurrentBtn.on({
-            click: function () {
-                var date = new Date();
-                var hours = date.getHours();
-                if (hours < 10) {
-                    hours = "0" + hours;
+                var hourItem = this.parentNode.parentNode.querySelector(".monk-form-time-item:nth-child(1)");
+                var minuteItem = this.parentNode.parentNode.querySelector(".monk-form-time-item:nth-child(2)");
+                var secondItem = this.parentNode.parentNode.querySelector(".monk-form-time-item:nth-child(3)");
+                var hourOption = hourItem.querySelector(".monk-form-time-hour[data-value='" + hour + "']");
+                var minuteOption = minuteItem.querySelector(".monk-form-time-minute[data-value='" + minute + "']");
+                var secondOption = secondItem.querySelector(".monk-form-time-second[data-value='" + second + "']");
+                hourItem.scrollTop = hourOption.offsetTop;
+                minuteItem.scrollTop = minuteOption.offsetTop;
+                secondItem.scrollTop = secondOption.offsetTop;
+                hourOption.classList.add("selected");
+                minuteOption.classList.add("selected");
+                secondOption.classList.add("selected");
+            });
+            ; input.addEventListener("blur", function () {
+                var inputValue = this.value;
+                if (!(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/.test(inputValue))) {
+                    var hourOpiton = this.parentNode.parentNode.querySelector(".monk-form-time-item:nth-child(1) .monk-form-time-hour.selected");
+                    var minuteOpiton = this.parentNode.parentNode.querySelector(".monk-form-time-item:nth-child(2) .monk-form-time-minute.selected");
+                    var secondOpiton = this.parentNode.parentNode.querySelector(".monk-form-time-item:nth-child(3) .monk-form-time-second.selected");
+                    var timeArr = [];
+                    timeArr[0] = hourOpiton ? hourOpiton.getAttribute("data-value") : "00";
+                    timeArr[1] = minuteOpiton ? minuteOpiton.getAttribute("data-value") : "00";
+                    timeArr[2] = secondOpiton ? secondOpiton.getAttribute("data-value") : "00";
+                    this.value = timeArr.join(":");
                 }
-                var minute = date.getMinutes();
-                if (minute < 10) {
-                    minute = "0" + minute;
-                }
-                var second = date.getSeconds();
-                if (second < 10) {
-                    second = "0" + second;
-                }
-                var value = hours + ":" + minute + ":" + second;
-
-                var time = $(this).parent(".monk-form-time-btn").parent(".monk-form-time");
-                var inputWrap = time.prev(".monk-form-time-wrap");
-                var input = inputWrap.children(".monk-form-input");
-                input.val(value);
-
-                _timeBtn.click();
-            }
+            });
         });
-        // 关闭
-        _timeBtn.on({
-            click: function () {
-                var time = $(this).parent(".monk-form-time-btn").parent(".monk-form-time");
-                var inputWrap = time.prev(".monk-form-time-wrap");
-                var input = inputWrap.children(".monk-form-input");
-
-                time.addClass("monk-none");
-                inputWrap.removeClass("focus");
-                input.blur();
+        function setTime(timeArr, that, typeIndex) {
+            var time = that.textContent.trim();
+            var lastWrap = that.parentNode.querySelector(".monk-form-time-" + typeIndex[1] + ".selected");
+            if (lastWrap !== that && lastWrap) {
+                lastWrap.classList.remove("selected");
             }
-        });
-
-        function selectTime(that, type) {
-            var index = 0;
-            switch (type) {
-                case "hour":
-                    index = 0;
-                    break;
-                case "minute":
-                    index = 1;
-                    break;
-                case "second":
-                    index = 2;
-                    break;
-            }
-            var timeItem = that.parent();
-            var value = $.trim(that.text());
-            var timeParent = that.parents(".monk-form-time");
-            var timeWrap = timeParent.prev(".monk-form-time-wrap");
-            var timeInput = timeWrap.children(".monk-form-input");
-            var inputValue = timeInput.val();
-
-            if (!(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/.test(inputValue))) {
-                timeInput.val("00:00:00");
-            }
-
-            var timeArr = inputValue.split(":");
-            if (timeArr.length == 0) {
-                timeArr = ["00", "00", "00"];
-            }
-            else if (timeArr.length == 1) {
-                timeArr.push("00");
-                timeArr.push("00");
-            }
-            else if (timeArr.length == 2) {
-                timeArr.push("00");
-            }
-            else {
-            }
-
-            that.addClass("selected").siblings(".monk-form-time-" + type).removeClass("selected");
-            timeArr[index] = value;
-            timeInput.val(timeArr.join(":"));
+            timeArr[typeIndex[0]] = time;
         }
-
-        _timeHour.on({
-            click: function () {
-                selectTime($(this), "hour");
-            }
+        // 小时选择
+        var times = document.querySelectorAll(".monk-form-time-hour,.monk-form-time-minute ,.monk-form-time-second");
+        Array.prototype.forEach.call(times, function (time, i) {
+            time.addEventListener("click", function () {
+                var input = this.parentNode.parentNode.parentNode.parentNode.querySelector(".monk-form-time-wrap .monk-form-input");
+                var readonly = input.getAttribute("readonly");
+                if (!readonly) {
+                    var inputValue = input.value;
+                    if (!(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/.test(inputValue))) {
+                        input.value = "00:00:00";
+                    }
+                    var timeArr = inputValue.split(":");
+                    if (timeArr.length == 0) {
+                        timeArr = ["00", "00", "00"];
+                    } else if (timeArr.length == 1) {
+                        timeArr.push("00");
+                        timeArr.push("00");
+                    } else if (timeArr.length == 2) {
+                        timeArr.push("00");
+                    }
+                    if (this.classList.contains("monk-form-time-hour")) {
+                        setTime(timeArr, this, [0, "hour"]);
+                    } else if (this.classList.contains("monk-form-time-minute")) {
+                        setTime(timeArr, this, [1, "minute"]);
+                    } else if (this.classList.contains("monk-form-time-second")) {
+                        setTime(timeArr, this, [2, "second"]);
+                    }
+                    input.value = timeArr.join(":");
+                    this.classList.add("selected");
+                }
+            });
         });
-        _timeMinute.on({
-            click: function () {
-                selectTime($(this), "minute");
-            }
+        // 点击按钮
+        var timeBtns = document.querySelectorAll(".monk-form-time-btn span");
+        Array.prototype.forEach.call(timeBtns, function (btn, i) {
+            btn.addEventListener("click", function () {
+                var input = this.parentNode.parentNode.parentNode.querySelector(".monk-form-time-wrap .monk-form-input");
+                if (this.classList.contains("monk-time-current")) {
+                    var readonly = input.getAttribute("readonly");
+                    if (!readonly) {
+                        var date = new Date();
+                        var hours = date.getHours();
+                        if (hours < 10) {
+                            hours = "0" + hours;
+                        }
+                        var minute = date.getMinutes();
+                        if (minute < 10) {
+                            minute = "0" + minute;
+                        }
+                        var second = date.getSeconds();
+                        if (second < 10) {
+                            second = "0" + second;
+                        }
+                        var value = hours + ":" + minute + ":" + second;
+                        input.value = value;
+                        this.parentNode.querySelector(".monk-time-close").click();
+                    }
+                } else if (this.classList.contains("monk-time-close")) {
+                    this.parentNode.parentNode.classList.add("monk-none");
+                    input.blur();
+                    input.parentNode.classList.remove("focus");
+                }
+            });
         });
-        _timeSecond.on({
-            click: function () {
-                selectTime($(this), "second");
-            }
-        });
-
-
-        // 点击图标
-        $(".icon-monk-time").on({
-            mousedown: function () {
-                var input = $(this).siblings(".monk-form-input");
-                var disabled = input.attr("disabled");
+        // 时间图标绑定事件
+        var timeIcons = document.querySelectorAll(".icon-monk-time");
+        Array.prototype.forEach.call(timeIcons, function (icon, i) {
+            icon.addEventListener("mousedown", function () {
+                var input = this.parentNode.querySelector(".monk-form-time-wrap .monk-form-input");
+                var disabled = input.getAttribute("disabled");
+                var timebox = input.parentNode.parentNode.querySelector(".monk-form-time");
                 if (disabled != "disabled") {
-                    if ($(this).parent(".monk-form-wrap").next(".monk-form-time").hasClass("monk-none")) {
+                    if (timebox.classList.contains("monk-none")) {
                         setTimeout(function () {
                             input.focus();
                         }, 100);
+                    } else {
+                        timebox.classList.add("monk-none");
+                        input.blur();
+                        input.parentNode.classList.remove("focus");
                     }
                 }
-            }
+            });
+            ;
         });
-    };
-
-    // 文件选择
+    }();
+    // 初始化文件选择
     exports.fileInit = function () {
-        $(".monk-file").on({
-            change: function () {
-                var value = $(this).val();
-                var input = $(this).parent(".monk-form-image-wrap").prev(".monk-form-wrap").children(".monk-form-input");
-                input.val(value);
-            }
+        var files = document.querySelectorAll(".monk-file");
+        Array.prototype.forEach.call(files, function (file, i) {
+            file.addEventListener("change", function () {
+                var value = this.value;
+                this.parentNode.parentNode.querySelector(".monk-form-input").value = value;
+            });
         });
-    };
-
-
-    // 初始化
-    exports.init = function () {
-        exports.inputInit();
-        exports.checkboxInit();
-        exports.switchInit();
-        exports.radioInit();
-        exports.selectInit();
-        exports.timeInit();
-        exports.fileInit();
-    };
-
-    exports.init();
+    }();
+    // 初始化代码显示
+    exports.codeInit = function () {
+        var codes = document.querySelectorAll(".monk-code");
+        Array.prototype.forEach.call(codes, function (code, i) {
+            var language = code.getAttribute("data-language");
+            var html = code.innerHTML;
+            if (language.toLowerCase() == "html" || language.toLowerCase() == "xml") {
+                html = html.replace(/&(?!#?[a-zA-Z0-9]+;)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;')
+            }
+            code.innerHTML = '<ol class="monk-code-line"><li><code>' + html.replace(/[\r\t\n]+/g, '</code></li><li><code>') + '</code></li></ol><span class="monk-code-language">' + language + '</span>';
+        });
+    }();
 });

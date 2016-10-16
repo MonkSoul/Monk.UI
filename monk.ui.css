@@ -52,7 +52,9 @@ canvas { display: inline-block; }
 template { display: none; }
 [hidden] { display: none; }
 input::-ms-clear { display: none; }
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button { -webkit-appearance: none !important; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; }
 
 @font-face { font-family: 'iconfont'; src: url('fonts/iconfont.eot'); /* IE9*/ src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/iconfont.woff') format('woff'), /* chrome、firefox */ url('fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */ }
 
@@ -77,7 +79,7 @@ input::-ms-clear { display: none; }
 
 /*基础*/
 * { box-sizing: border-box; -moz-box-sizing: border-box; }
-::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { margin-top: 1px; }
 ::-webkit-scrollbar-thumb { background: #e6e6e6; }
 ::-webkit-scrollbar-thumb:window-inactive { background: #e6e6e6; }
@@ -122,18 +124,19 @@ input::-ms-clear { display: none; }
 
 /*选择框*/
 .monk-form-checkbox-wrap { cursor: pointer; }
-.monk-form-checkbox { display: inline-block; float: left; height: 40px; line-height: 40px; font-size: 16px; padding: 0 10px; }
+.monk-checkbox-text { display: inline-block; float: left; height: 40px; line-height: 40px; font-size: 16px; padding: 0 10px; }
 .monk-form-checkbox-wrap[checked] { border: 1px solid #1abc9c; transition: border 0.2s; -moz-transition: border 0.2s; }
-.monk-form-checkbox-wrap[checked] .monk-form-checkbox { background: #1abc9c; color: #fff; transition: background 0.2s; -moz-transition: background 0.2s; }
+.monk-form-checkbox-wrap[checked] .monk-checkbox-text { background: #1abc9c; color: #fff; transition: background 0.2s; -moz-transition: background 0.2s; }
 .monk-form-checkbox-wrap[checked] .monk-iconfont { color: #1abc9c; border-left: 1px solid #1abc9c; transition: border 0.2s; -moz-transition: border 0.2s; }
 .monk-form-checkbox-wrap.focus { border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; }
 .monk-form-checkbox-wrap[disabled] { cursor: not-allowed; }
-.monk-form-checkbox-wrap[disabled] .monk-form-checkbox { background: #f2f2f2 !important; color: #000; }
+.monk-form-checkbox-wrap[disabled] .monk-checkbox-text { background: #f2f2f2 !important; color: #000; }
 .monk-checkbox { display: none; }
 
 /*滑块*/
 .monk-form-switch-wrap { cursor: pointer; padding-left: 40px; border: 1px solid #e6e6e6; }
-.monk-form-switch-wrap .monk-iconfont { content: "\e607"; position: absolute; top: 0; left: 0; z-index: 10; }
+.monk-form-switch-wrap .monk-iconfont { position: absolute; top: 0; left: 0; z-index: 10; border-right: 1px solid #e6e6e6; }
+.monk-form-switch-wrap .monk-iconfont:before { content: "\e607"; }
 .monk-switch-text { display: block; float: left; height: 40px; line-height: 40px; padding: 0 10px; }
 .monk-form-switch-wrap[checked] { border: 1px solid #1abc9c; padding-left: 0; padding-right: 40px; }
 .monk-form-switch-wrap[checked] .monk-iconfont { border-left: 1px solid #1abc9c; border-right: 0; background: #1abc9c; color: #fff; left: auto; right: 0; }
@@ -144,20 +147,20 @@ input::-ms-clear { display: none; }
 
 /*单选按钮*/
 .monk-form-radio-wrap { cursor: pointer; background: transparent; border: 1px solid #e6e6e6; transition: background,border 0.2s; -moz-transition: background,border 0.2s; }
-.monk-form-radio { display: inline-block; float: left; height: 40px; line-height: 40px; font-size: 16px; padding: 0 10px 0 0; }
+.monk-radio-text { display: inline-block; float: left; height: 40px; line-height: 40px; font-size: 16px; padding: 0 10px 0 0; }
 .monk-form-radio-wrap .monk-iconfont { background: transparent; font-size: 20px; content: "\e608"; }
 .monk-form-radio-wrap[checked] { background: #1abc9c; border: 1px solid #1abc9c; }
-.monk-form-radio-wrap[checked] .monk-form-radio { color: #fff; }
+.monk-form-radio-wrap[checked] .monk-radio-text { color: #fff; }
 .monk-form-radio-wrap[checked] .monk-iconfont { color: #fff; }
 .monk-form-radio-wrap[checked] .monk-iconfont:before { content: "\e609"; }
 .monk-form-radio-wrap[disabled] { background: #f2f2f2; cursor: not-allowed; }
 .monk-form-radio-wrap[disabled][checked] .monk-iconfont { color: #1abc9c; }
-.monk-form-radio-wrap[disabled][checked] .monk-form-radio { color: #1abc9c; }
+.monk-form-radio-wrap[disabled][checked] .monk-radio-text { color: #1abc9c; }
 .monk-form-radio-wrap.focus { border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; }
 .monk-radio { display: none; }
 
 /*下拉列表*/
-.monk-form-select { height: 200px; width: 282px; border: 1px solid #e6e6e6; position: absolute; left: 0; top: 64px; background: #fff; right: 0; z-index: 100; border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; overflow: auto; }
+.monk-form-select { height: 200px; border: 1px solid #e6e6e6; position: absolute; left: 0; top: 64px; background: #fff; right: 0; z-index: 100; border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; overflow: auto; }
 .monk-form-select.monk-none { display: none; }
 .monk-form-wrap.monk-form-select-wrap .monk-iconfont.monk-select-arrow { cursor: pointer; pointer-events: auto; }
 .monk-form-wrap.monk-form-select-wrap .monk-iconfont.monk-select-arrow:before { content: "\e606"; }
@@ -168,7 +171,7 @@ input::-ms-clear { display: none; }
 .monk-select { display: none; }
 
 /*时间选择器*/
-.monk-form-time { height: 210px; width: 282px; border: 1px solid #e6e6e6; position: absolute; left: 0; top: 64px; background: #fff; right: 0; z-index: 100; border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; overflow: hidden; }
+.monk-form-time { height: 210px; border: 1px solid #e6e6e6; position: absolute; left: 0; top: 64px; background: #fff; right: 0; z-index: 100; border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; overflow: hidden; }
 .monk-form-time.monk-none { display: none; }
 .monk-form-time-title { border-bottom: 1px solid #e6e6e6; height: 40px; line-height: 40px; }
 .monk-form-time-title span { display: block; float: left; width: 33.3333%; border-right: 1px solid #e6e6e6; text-align: center; font-size: 14px; color: #3498db; }
@@ -206,3 +209,12 @@ input::-ms-clear { display: none; }
 
 /*显示文本*/
 .monk-form-detail-wrap { padding: 10px; background: #f5f5f5; font-size: 16px; line-height: 24px; color: #444; }
+
+/*显示代码*/
+.monk-form-code-wrap { border: none; }
+.monk-code { border: 1px solid #e6e6e6; background: #f6f6f6; width: 100%; padding: 10px 10px 10px 0; position: relative; margin: 0; }
+.monk-code ol { list-style-type: decimal; margin: 0; }
+.monk-code ol li { font-size: 13px; color: #999; padding: 0; }
+.monk-code ol li code { color: #444; line-height: 1.6; font-size: 14px; padding: 0 10px; font-family: Arial; display: block; }
+.monk-code ol li:nth-child(2n+1) { background: #eeeeee; }
+.monk-code-language { position: absolute; right: 0; bottom: 0; z-index: 10; font-family: Arial; padding: 3px; color: #080; font-size: 12px; }
