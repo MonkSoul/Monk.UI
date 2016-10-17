@@ -869,13 +869,13 @@ for (int index = 1; index < data.length; index++) {
             }
         ]
     };
-    // 调用hui.tppl(tpl,data); 返回渲染之后的HTML，不能重复渲染多个数据集合
-    var html = hui.tppl(document.getElementById("tppl").innerHTML, data);
+    // 调用monk.tppl(tpl,data); 返回渲染之后的HTML，不能重复渲染多个数据集合
+    var html = monk.tppl(document.getElementById("tppl").innerHTML, data);
 
     // 同时也可以这样调用
-    var render = hui.tppl(document.getElementById("tppl").innerHTML);
+    var render = monk.tppl(document.getElementById("tppl").innerHTML);
     var html = render(data); // 可以载入不同的数据渲染同一套模板
-    var html2 = render({ list: [{ name: "Hui 2.x", autor: "百小僧" }] });
+    var html2 = render({ list: [{ name: "Monk 2.x", autor: "百小僧" }] });
 </script>
 ```
 
