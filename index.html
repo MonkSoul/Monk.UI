@@ -966,13 +966,13 @@ for (int index = 1; index &lt; data.length; index++) {
 <span class="pl-s1">            }</span>
 <span class="pl-s1">        ]</span>
 <span class="pl-s1">    };</span>
-<span class="pl-s1">    <span class="pl-c">// 调用hui.tppl(tpl,data); 返回渲染之后的HTML，不能重复渲染多个数据集合</span></span>
-<span class="pl-s1">    <span class="pl-k">var</span> html <span class="pl-k">=</span> <span class="pl-smi">hui</span>.<span class="pl-en">tppl</span>(<span class="pl-c1">document</span>.<span class="pl-c1">getElementById</span>(<span class="pl-s"><span class="pl-pds">"</span>tppl<span class="pl-pds">"</span></span>).<span class="pl-smi">innerHTML</span>, data);</span>
+<span class="pl-s1">    <span class="pl-c">// 调用monk.tppl(tpl,data); 返回渲染之后的HTML，不能重复渲染多个数据集合</span></span>
+<span class="pl-s1">    <span class="pl-k">var</span> html <span class="pl-k">=</span> <span class="pl-smi">monk</span>.<span class="pl-en">tppl</span>(<span class="pl-c1">document</span>.<span class="pl-c1">getElementById</span>(<span class="pl-s"><span class="pl-pds">"</span>tppl<span class="pl-pds">"</span></span>).<span class="pl-smi">innerHTML</span>, data);</span>
 <span class="pl-s1"></span>
 <span class="pl-s1">    <span class="pl-c">// 同时也可以这样调用</span></span>
-<span class="pl-s1">    <span class="pl-k">var</span> render <span class="pl-k">=</span> <span class="pl-smi">hui</span>.<span class="pl-en">tppl</span>(<span class="pl-c1">document</span>.<span class="pl-c1">getElementById</span>(<span class="pl-s"><span class="pl-pds">"</span>tppl<span class="pl-pds">"</span></span>).<span class="pl-smi">innerHTML</span>);</span>
+<span class="pl-s1">    <span class="pl-k">var</span> render <span class="pl-k">=</span> <span class="pl-smi">monk</span>.<span class="pl-en">tppl</span>(<span class="pl-c1">document</span>.<span class="pl-c1">getElementById</span>(<span class="pl-s"><span class="pl-pds">"</span>tppl<span class="pl-pds">"</span></span>).<span class="pl-smi">innerHTML</span>);</span>
 <span class="pl-s1">    <span class="pl-k">var</span> html <span class="pl-k">=</span> <span class="pl-en">render</span>(data); <span class="pl-c">// 可以载入不同的数据渲染同一套模板</span></span>
-<span class="pl-s1">    <span class="pl-k">var</span> html2 <span class="pl-k">=</span> <span class="pl-en">render</span>({ list<span class="pl-k">:</span> [{ name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Hui 2.x<span class="pl-pds">"</span></span>, autor<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>百小僧<span class="pl-pds">"</span></span> }] });</span>
+<span class="pl-s1">    <span class="pl-k">var</span> html2 <span class="pl-k">=</span> <span class="pl-en">render</span>({ list<span class="pl-k">:</span> [{ name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Monk 2.x<span class="pl-pds">"</span></span>, autor<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>百小僧<span class="pl-pds">"</span></span> }] });</span>
 <span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
 
 <h3>
