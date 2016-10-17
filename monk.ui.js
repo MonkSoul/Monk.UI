@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.2.0
+ * version: 0.2.1
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,7 +18,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.2.0";
+    exports.v = "0.2.1";
     // 初始化文本框
     exports.inputInit = function () {
         var inputs = document.querySelectorAll(".monk-form-input,.monk-form-textarea");
@@ -320,9 +320,7 @@
         function createTimeTags() {
             var html = '<div class="monk-form-time monk-none">';
             html += '<div class="monk-form-time-title">';
-            html += '<span>小时</span>';
-            html += '<span>分钟</span>';
-            html += '<span>秒钟</span>';
+            html += '<span>小时</span><span>分钟</span><span>秒钟</span>';
             html += '</div>';
             html += '<div class="monk-form-time-list">';
             html += '<div class="monk-form-time-item">';
@@ -531,4 +529,31 @@
             code.innerHTML = '<ol class="monk-code-line"><li><code>' + html.replace(/[\r\t\n]+/g, '</code></li><li><code>') + '</code></li></ol><span class="monk-code-language">' + language + '</span>';
         });
     }();
+    exports.tppl_flag = ["<%", "%>"];
+    exports.tppl = function (tpl, data) {
+        var that = this;
+        var fn = function (d) {
+            var i, k = [], v = [];
+            for (i in d) {
+                k.push(i);
+                v.push(d[i]);
+            }
+            ; return (new Function(k, fn.$)).apply(d, v);
+        }
+        ;
+        if (!fn.$) {
+            var tpls = tpl.split(that.tppl_flag[0]);
+            fn.$ = "var $=''";
+            for (var t = 0; t < tpls.length; t++) {
+                var p = tpls[t].split(that.tppl_flag[1]);
+                if (t != 0) {
+                    fn.$ += '=' == p[0].charAt(0) ? "+(" + p[0].substr(1) + ")" : ";" + p[0].replace(/\r\n/g, '') + "$=$"
+                }
+                fn.$ += "+'" + p[p.length - 1].replace(/\'/g, "\\'").replace(/\r\n/g, '\\n').replace(/\n/g, '\\n').replace(/\r/g, '\\n') + "'";
+            }
+            fn.$ += ";return $;";
+        }
+        return data ? fn(data) : fn;
+    }
+    ;
 });

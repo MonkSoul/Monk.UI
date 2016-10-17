@@ -7,7 +7,7 @@
 - 原创作者：`百小僧`
 - 开源协议：`MIT License`
 - 开发时间：`2016年10月13日`
-- 项目版本：`0.2.0`
+- 项目版本：`0.2.1`
 - 项目名称：`Monk.UI`
 - 版权所有：[百签软件（中山）有限公司](http://www.baisoft.org)
 - 联系方式：QQ群：`123049073`，作者QQ：`8020292`
@@ -778,32 +778,19 @@
 - HTML
 
 ```html
-<div class="monk-form-item">
-    <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
-    <div class="monk-form-wrap monk-form-code-wrap monk-full">
-        <pre class="monk-code" data-language="HTML"><p>百签软件，源于百签。</p></pre>
-    </div>
-</div>
+<pre class="monk-code" data-language="HTML"><p>百签软件，源于百签。</p></pre>
 ```
 
 - CSS
 
 ```html
-<div class="monk-form-item">
-    <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
-    <div class="monk-form-wrap monk-form-code-wrap monk-full">
-        <pre class="monk-code" data-language="CSS">* { box-sizing: border-box; -moz-box-sizing: border-box; }</pre>
-    </div>
-</div>
+<pre class="monk-code" data-language="CSS">* { box-sizing: border-box; -moz-box-sizing: border-box; }</pre>
 ```
 
 - C#
 
 ```html
-<div class="monk-form-item">
-    <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
-    <div class="monk-form-wrap monk-form-code-wrap monk-full">
-        <pre class="monk-code" data-language="C#">using Microsoft.Owin;
+<pre class="monk-code" data-language="C#">using Microsoft.Owin;
 using Owin;
 [assembly: OwinStartup(typeof(Monk.App_Start.Startup))]
 namespace Monk.App_Start
@@ -816,17 +803,12 @@ namespace Monk.App_Start
         }
     }
 }</pre>
-    </div>
-</div>
 ```
 
 - PHP
 
 ```html
-<div class="monk-form-item">
-    <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
-    <div class="monk-form-wrap monk-form-code-wrap monk-full">
-        <pre class="monk-code" data-language="PHP">namespace app\index\controller;
+<pre class="monk-code" data-language="PHP">namespace app\index\controller;
 class Index
 {
     public function index()
@@ -834,17 +816,12 @@ class Index
         return 'index';
     }
 }</pre>
-    </div>
-</div>
 ```
 
 - Java
 
 ```html
-<div class="monk-form-item">
-    <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
-    <div class="monk-form-wrap monk-form-code-wrap monk-full">
-        <pre class="monk-code" data-language="PHP">public static void insertionSort(int[] data) {
+<pre class="monk-code" data-language="PHP">public static void insertionSort(int[] data) {
 for (int index = 1; index < data.length; index++) {
     int key = data[index];
     int position = index;
@@ -856,19 +833,50 @@ for (int index = 1; index < data.length; index++) {
     data[position] = key;
 }
 }</pre>
-    </div>
-</div>
 ```
 
 - SQL
 
 ```html
-<div class="monk-form-item">
-    <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
-    <div class="monk-form-wrap monk-form-code-wrap monk-full">
-        <pre class="monk-code" data-language="SQL">select * from web where site='http://www.baisoft.org/'</pre>
-    </div>
-</div>
+<pre class="monk-code" data-language="SQL">select * from web where site='http://www.baisoft.org/'</pre>
+```
+
+### 模板引擎
+
+- 定义模板
+
+```html
+<!--定义模板，<% %> 包裹Javascript代码，<%= %> 输出变量 -->
+<script type="text/html" id="tppl">
+    <% for(var i=0; i < list.length;i++){ %>
+                <li>名称：<%=list[i].name %></li>
+    <%} %>
+</script>
+```
+
+- 渲染模板
+
+```html
+<!--使用-->
+<script type="text/javascript">
+    // 定义数据集合，必须是json类型
+    var data = {
+        list: [
+            {
+                name: "百签软件",
+                autor: "百小僧",
+                age: 23
+            }
+        ]
+    };
+    // 调用hui.tppl(tpl,data); 返回渲染之后的HTML，不能重复渲染多个数据集合
+    var html = hui.tppl(document.getElementById("tppl").innerHTML, data);
+
+    // 同时也可以这样调用
+    var render = hui.tppl(document.getElementById("tppl").innerHTML);
+    var html = render(data); // 可以载入不同的数据渲染同一套模板
+    var html2 = render({ list: [{ name: "Hui 2.x", autor: "百小僧" }] });
+</script>
 ```
 
 ### 更多功能，整理开发中。。。。

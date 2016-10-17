@@ -624,7 +624,7 @@ class Index
         <div class="monk-form-item">
             <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
             <div class="monk-form-wrap monk-form-code-wrap monk-full">
-                <pre class="monk-code" data-language="PHP">public static void insertionSort(int[] data) {
+                <pre class="monk-code" data-language="JAVA">public static void insertionSort(int[] data) {
     for (int index = 1; index < data.length; index++) {
         int key = data[index];
         int position = index;
@@ -647,7 +647,46 @@ class Index
             </div>
         </div>
         <!--========分割线========-->
+        <h1>模板引擎</h1>
+        <h2>定义模板</h2>
+        <div class="monk-form-item">
+            <div class="monk-form-wrap monk-form-code-wrap monk-full">
+                <pre class="monk-code" data-language="HTML"><!--定义模板，<% %> 包裹Javascript代码，<%= %> 输出变量 -->
+<script type="text/html" id="tppl">
+    <% for(var i=0; i < list.length;i++){ %>
+                <li>名称：<%=list[i].name %></li>
+    <%} %>
+</script></pre>
+            </div>
+        </div>
+        <!--========分割线========-->
+        <h2>渲染模板</h2>
+        <div class="monk-form-item">
+            <div class="monk-form-wrap monk-form-code-wrap monk-full">
+                <pre class="monk-code" data-language="HTML"><!--使用-->
+<script type="text/javascript">
+    // 定义数据集合，必须是json类型
+    var data = {
+        list: [
+            {
+                name: "百签软件",
+                autor: "百小僧",
+                age: 23
+            }
+        ]
+    };
+    // 调用hui.tppl(tpl,data); 返回渲染之后的HTML，不能重复渲染多个数据集合
+    var html = hui.tppl(document.getElementById("tppl").innerHTML, data);
+
+    // 同时也可以这样调用
+    var render = hui.tppl(document.getElementById("tppl").innerHTML);
+    var html = render(data); // 可以载入不同的数据渲染同一套模板
+    var html2 = render({ list: [{ name: "Hui 2.x", autor: "百小僧" }] });
+</script></pre>
+            </div>
+        </div>
+        <!--========分割线========-->
     </div>
-    <script src="monk.ui.min.js"></script>
+    <script src="monk.ui.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.css
- * version: 0.1.3
+ * version: 0.2.1
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -212,7 +212,7 @@ input[type="number"] { -moz-appearance: textfield; }
 
 /*显示代码*/
 .monk-form-code-wrap { border: none; }
-.monk-code { border: 1px solid #e6e6e6; background: #f6f6f6; width: 100%; padding: 10px 10px 10px 0; position: relative; margin: 0; }
+.monk-code { border: 1px solid #e6e6e6; background: #f7f7f7; width: 100%; padding: 10px 10px 10px 0; position: relative; margin: 0; }
 .monk-code ol { list-style-type: decimal; margin: 0; }
 .monk-code ol li { font-size: 13px; color: #999; padding: 0; }
 .monk-code ol li code { color: #444; line-height: 1.6; font-size: 14px; padding: 0 10px; font-family: Arial; display: block; }
