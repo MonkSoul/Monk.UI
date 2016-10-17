@@ -529,6 +529,7 @@
             code.innerHTML = '<ol class="monk-code-line"><li><code>' + html.replace(/[\r\t\n]+/g, '</code></li><li><code>') + '</code></li></ol><span class="monk-code-language">' + language + '</span>';
         });
     }();
+    // 模板引擎
     exports.tppl_flag = ["<%", "%>"];
     exports.tppl = function (tpl, data) {
         var that = this;
