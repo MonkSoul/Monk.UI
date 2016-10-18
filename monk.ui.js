@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.2.3
+ * version: 0.2.4
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,30 +18,31 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.2.3";
+    exports.v = "0.2.4";
     // 初始化文本框
-    exports.inputInit = function () {
-        var inputs = document.querySelectorAll(".monk-form-input,.monk-form-textarea");
-        // 设置必填图标位置
-        function setRequireIconOffset(parent, init) {
-            var requireIcon = parent.querySelector(".monk-iconfont.icon-monk-required");
-            var clearBtn = parent.querySelector(".monk-clear-input");
-            if (requireIcon && clearBtn) {
-                if (init) {
-                    var width = requireIcon.offsetWidth;
-                    var parentWidth = parent.offsetWidth - 2;
-                    var offsetLeft = requireIcon.offsetLeft;
-                    requireIcon.style.right = -(parentWidth - offsetLeft - width) + "px";
-                } else {
-                    requireIcon.style.right = "0px";
-                }
+    // 设置必填图标位置
+    exports.setRequireIconOffset = function (parent, init) {
+        var requireIcon = parent.querySelector(".monk-iconfont.icon-monk-required");
+        var clearBtn = parent.querySelector(".monk-clear-input");
+        if (requireIcon && clearBtn) {
+            if (init) {
+                var width = requireIcon.offsetWidth;
+                var parentWidth = parent.offsetWidth - 2;
+                var offsetLeft = requireIcon.offsetLeft;
+                requireIcon.style.right = -(parentWidth - offsetLeft - width) + "px";
+            } else {
+                requireIcon.style.right = "0px";
             }
         }
+    }
+    ;
+    exports.inputInit = function () {
+        var inputs = document.querySelectorAll(".monk-form-input,.monk-form-textarea");
         // 初始化文本框并绑定事件
         Array.prototype.forEach.call(inputs, function (input, i) {
             // 初始化关闭按钮和必填位置问题
             var parent = input.parentNode;
-            setRequireIconOffset(parent, true);
+            exports.setRequireIconOffset(parent, true);
             // 绑定focus事件
             input.addEventListener("focus", function () {
                 var parent = this.parentNode;
@@ -62,10 +63,22 @@
                 if (clearBtn) {
                     if (value != "") {
                         clearBtn.style.cssText = "visibility:visible;";
-                        setRequireIconOffset(parent);
+                        exports.setRequireIconOffset(parent);
                     } else {
                         clearBtn.style.cssText = "visibility:hidden;";
-                        setRequireIconOffset(parent, true);
+                        exports.setRequireIconOffset(parent, true);
+                    }
+                }
+            });
+            // 绑定change事件
+            input.addEventListener("change", function () {
+                var parent = this.parentNode;
+                var value = this.value.trim();
+                var clearBtn = parent.querySelector(".monk-clear-input");
+                if (clearBtn) {
+                    if (value == "") {
+                        clearBtn.style.cssText = "visibility:hidden;";
+                        exports.setRequireIconOffset(parent, true);
                     }
                 }
             });
@@ -76,7 +89,7 @@
                     var parent = this.parentNode;
                     var input = parent.querySelector(".monk-form-input,.monk-form-textarea");
                     input.value = "";
-                    setRequireIconOffset(parent, true);
+                    exports.setRequireIconOffset(parent, true);
                     this.style.cssText = "visibility:hidden;";
                 });
                 ;
@@ -217,7 +230,7 @@
             var selectValue = option.value;
             var selectText = option.textContent;
             list.querySelector(".monk-form-option[data-value='" + selectValue + "']").setAttribute("selected", "selected");
-            list.parentNode.querySelector(".monk-form-select-wrap .monk-form-input").value = selectText;
+            list.parentNode.querySelector(".monk-form-select-wrap .monk-form-input").setAttribute("value", selectText);
             // 绑定事件
             var options = list.querySelectorAll(".monk-form-option");
             Array.prototype.forEach.call(options, function (option, i) {
@@ -392,6 +405,12 @@
                 var hourOption = hourItem.querySelector(".monk-form-time-hour[data-value='" + hour + "']");
                 var minuteOption = minuteItem.querySelector(".monk-form-time-minute[data-value='" + minute + "']");
                 var secondOption = secondItem.querySelector(".monk-form-time-second[data-value='" + second + "']");
+                var hourSelect = hourItem.querySelector(".monk-form-time-hour.selected");
+                var minuteSelect = minuteItem.querySelector(".monk-form-time-minute.selected");
+                var secondSelect = secondItem.querySelector(".monk-form-time-second.selected");
+                hourSelect ? hourSelect.classList.remove("selected") : "";
+                minuteSelect ? minuteSelect.classList.remove("selected") : "";
+                secondSelect ? secondSelect.classList.remove("selected") : "";
                 hourItem.scrollTop = hourOption.offsetTop;
                 minuteItem.scrollTop = minuteOption.offsetTop;
                 secondItem.scrollTop = secondOption.offsetTop;
@@ -557,4 +576,77 @@
         return data ? fn(data) : fn;
     }
     ;
+    // 重置表单
+    exports.resetForm = function () {
+        // 解决reset点击后，关闭按钮问题
+        var reset = document.querySelector("input[type='reset']");
+        function getParentsForm(el) {
+            var form;
+            function callee(el) {
+                if (el) {
+                    if (el.parentNode.tagName.toLowerCase() == "form") {
+                        form = el.parentNode;
+                        return;
+                    } else {
+                        arguments.callee(el.parentNode);
+                    }
+                }
+            }
+            callee(el);
+            return form;
+        }
+        ;// 重置复选框，单选框，切换框
+        function resetCheckboxRadio(form, type) {
+            var checkboxs = form.querySelectorAll(".monk-" + type);
+            Array.prototype.forEach.call(checkboxs, function (checkbox, i) {
+                var name = checkbox.getAttribute("name");
+                var value = checkbox.value;
+                var parent = checkbox.parentNode;
+                var wrap = parent.querySelector(".monk-form-" + type + "-wrap[data-name='" + name + "'][data-value='" + value + "']");
+                if (checkbox.checked == true) {
+                    wrap.setAttribute("checked", "checked");
+                } else {
+                    wrap.removeAttribute("checked");
+                }
+            });
+        }
+        ; reset.addEventListener("click", function () {
+            var form = getParentsForm(this);
+            if (form) {
+                form.reset();
+                // 重置输入框
+                var inputs = form.querySelectorAll(".monk-form-input,.monk-form-textarea");
+                Array.prototype.forEach.call(inputs, function (input, i) {
+                    var parent = input.parentNode;
+                    var value = input.value.trim();
+                    var clearBtn = parent.querySelector(".monk-clear-input");
+                    if (clearBtn) {
+                        if (value != "") {
+                            clearBtn.style.cssText = "visibility:visible;";
+                            exports.setRequireIconOffset(parent);
+                        } else {
+                            clearBtn.style.cssText = "visibility:hidden;";
+                            exports.setRequireIconOffset(parent, true);
+                        }
+                    }
+                });
+                // 重置radio，checkbox，switch
+                resetCheckboxRadio(form, "checkbox");
+                resetCheckboxRadio(form, "switch");
+                resetCheckboxRadio(form, "radio");
+                // 重置时间（无需重置）
+                // 重置下拉
+                var selects = form.querySelectorAll(".monk-select");
+                Array.prototype.forEach.call(selects, function (select, i) {
+                    var option = select.querySelectorAll("option")[select.selectedIndex];
+                    var selectValue = option.value;
+                    var selectText = option.textContent;
+                    var lastSelectOption = select.parentNode.querySelector(".monk-form-option[selected='selected']");
+                    lastSelectOption ? lastSelectOption.removeAttribute("selected") : "";
+                    select.parentNode.querySelector(".monk-form-option[data-value='" + selectValue + "']").setAttribute("selected", "selected");
+                    select.parentNode.parentNode.querySelector(".monk-form-select-wrap .monk-form-input").setAttribute("value", selectText);
+                });
+            }
+        });
+    }();
 });
