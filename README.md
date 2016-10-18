@@ -118,7 +118,7 @@
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
     <div class="monk-form-wrap">
-        <span class="monk-iconfont border-right icon-monk-lock"></span>
+        <span class="monk-iconfont border-right icon-monk-input"></span>
         <input type="text" class="monk-form-input normal" placeholder="请输入..." />
         <span class="monk-iconfont icon-monk-required"></span>
         <span class="monk-iconfont border-left icon-monk-dacha monk-clear-input"></span>
@@ -133,7 +133,7 @@
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
     <div class="monk-form-wrap">
-        <span class="monk-iconfont border-right icon-monk-lock"></span>
+        <span class="monk-iconfont border-right icon-monk-input"></span>
         <input type="text" class="monk-form-input normal" readonly="readonly" placeholder="请输入..." />
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>
@@ -146,7 +146,7 @@
 <div class="monk-form-item">
     <label for="" class="monk-form-label monk-color-peterriver">表单标题</label>
     <div class="monk-form-wrap">
-        <span class="monk-iconfont border-right icon-monk-lock"></span>
+        <span class="monk-iconfont border-right icon-monk-input"></span>
         <input type="text" class="monk-form-input normal" disabled="disabled" placeholder="请输入..." />
     </div>
     <div class="monk-form-tip">写点什么描述一下</div>

@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.2.2
+ * version: 0.2.3
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,7 +18,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.2.2";
+    exports.v = "0.2.3";
     // 初始化文本框
     exports.inputInit = function () {
         var inputs = document.querySelectorAll(".monk-form-input,.monk-form-textarea");
@@ -74,7 +74,7 @@
                 // 绑定关闭按钮
                 clearBtn.addEventListener("click", function () {
                     var parent = this.parentNode;
-                    var input = parent.querySelector(".monk-form-input");
+                    var input = parent.querySelector(".monk-form-input,.monk-form-textarea");
                     input.value = "";
                     setRequireIconOffset(parent, true);
                     this.style.cssText = "visibility:hidden;";
