@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.css
- * version: 0.2.1
+ * version: 0.2.2
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -57,20 +57,14 @@ input::-webkit-inner-spin-button { -webkit-appearance: none !important; margin: 
 input[type="number"] { -moz-appearance: textfield; }
 
 @font-face { font-family: 'iconfont'; src: url('fonts/iconfont.eot'); /* IE9*/ src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/iconfont.woff') format('woff'), /* chrome、firefox */ url('fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */ }
-
 .monk-iconfont { font-family: "iconfont" !important; font-size: 16px; font-style: normal; -webkit-font-smoothing: antialiased; -webkit-text-stroke-width: 0.2px; -moz-osx-font-smoothing: grayscale; }
-
 .icon-monk-number:before { content: "\e60a"; }
-.icon-monk-image:before { content: "\e60b"; }
 .icon-monk-file:before { content: "\e60f"; }
 .icon-monk-time:before { content: "\e60c"; }
 .icon-monk-arrowup:before { content: "\e602"; }
 .icon-monk-required:before { content: "\e600"; }
-.icon-monk-lock:before { content: "\e603"; }
 .icon-monk-dagou:before { content: "\e604"; }
-.icon-monk-account:before { content: "\e605"; }
 .icon-monk-input:before { content: "\e601"; }
-.icon-monk-folder:before { content: "\e60d"; }
 .icon-monk-date:before { content: "\e60e"; }
 .icon-monk-radio:before { content: "\e608"; }
 .icon-monk-radio-checked:before { content: "\e609"; }
@@ -81,17 +75,14 @@ input[type="number"] { -moz-appearance: textfield; }
 * { box-sizing: border-box; -moz-box-sizing: border-box; }
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { margin-top: 1px; }
-::-webkit-scrollbar-thumb { background: #e6e6e6; }
-::-webkit-scrollbar-thumb:window-inactive { background: #e6e6e6; }
-
-.monk-color-peterriver { color: #3498db; }
-.monk-color-alizarin { color: #e74c3c; }
+::-webkit-scrollbar-thumb { background: #9f9f9f; }
+::-webkit-scrollbar-thumb:window-inactive { background: #9f9f9f; }
 
 /*表单*/
 .monk-content-10 { padding: 10px; }
 .monk-form-item.inline { display: inline-block; }
 .monk-form-item { margin-bottom: 10px; clear: both; position: relative; }
-.monk-form-label { display: block; padding: 0 0 5px 0; }
+.monk-form-label { display: block; padding: 0 0 5px 0; color: #3498db; }
 .monk-form-wrap { display: inline-block; border: 1px solid #e6e6e6; border-radius: 3px; position: relative; overflow: hidden; }
 .monk-form-wrap.monk-full { width: 100%; }
 .monk-form-wrap.focus { border-color: #1abc9c; box-shadow: 0 0 10px #1abc9c; }
@@ -212,9 +203,8 @@ input[type="number"] { -moz-appearance: textfield; }
 
 /*显示代码*/
 .monk-form-code-wrap { border: none; }
-.monk-code { border: 1px solid #e6e6e6; background: #f7f7f7; width: 100%; padding: 10px 10px 10px 0; position: relative; margin: 0; }
-.monk-code ol { list-style-type: decimal; margin: 0; }
-.monk-code ol li { font-size: 13px; color: #999; padding: 0; }
-.monk-code ol li code { color: #444; line-height: 1.6; font-size: 14px; padding: 0 10px; font-family: Arial; display: block; }
-.monk-code ol li:nth-child(2n+1) { background: #eeeeee; }
-.monk-code-language { position: absolute; right: 0; bottom: 0; z-index: 10; font-family: Arial; padding: 3px; color: #080; font-size: 12px; }
+.monk-code { border: 1px solid #e6e6e6; background: #f5f5f5; width: 100%; padding: 20px 10px 20px 0; position: relative; margin: 0; }
+.monk-code-language { position: absolute; right: 0; bottom: 0; z-index: 10; font-family: Arial; padding: 3px; color: #999; font-size: 12px; }
+.monk-code ol.monk-code-area { list-style-type: decimal; margin: 0; }
+.monk-code ol.monk-code-area li { font-size: 12px; color: #999; padding: 0; }
+.monk-code ol.monk-code-area li code { color: #000; line-height: 1.8; font-size: 14px; padding: 0 10px; font-family: Arial; display: block; background: #fff; }

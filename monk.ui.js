@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.2.1
+ * version: 0.2.2
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,7 +18,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.2.1";
+    exports.v = "0.2.2";
     // 初始化文本框
     exports.inputInit = function () {
         var inputs = document.querySelectorAll(".monk-form-input,.monk-form-textarea");
@@ -526,7 +526,7 @@
             if (language.toLowerCase() == "html" || language.toLowerCase() == "xml") {
                 html = html.replace(/&(?!#?[a-zA-Z0-9]+;)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;')
             }
-            code.innerHTML = '<ol class="monk-code-line"><li><code>' + html.replace(/[\r\t\n]+/g, '</code></li><li><code>') + '</code></li></ol><span class="monk-code-language">' + language + '</span>';
+            code.innerHTML = '<ol class="monk-code-area"><li><code>' + html.replace(/[\r\t\n]+/g, '</code></li><li><code>') + '</code></li></ol><span class="monk-code-language">' + language + '</span>';
         });
     }();
     // 模板引擎
