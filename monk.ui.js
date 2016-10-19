@@ -100,18 +100,6 @@
                 });
                 ;
             }
-            // 自适应
-            var areaWidth = input.parentNode.parentNode.offsetWidth;
-            var parentWidth = input.parentNode.offsetWidth;
-            if (parentWidth >= areaWidth) {
-                var width = 0;
-                Array.prototype.filter.call(input.parentNode.children, function (child) {
-                    if (child !== input) {
-                        width += child.offsetWidth;
-                    }
-                });
-                input.style.width = areaWidth - width - 2 + "px";
-            }
         });
     }();
     // 生成checkbox，radio，switch
