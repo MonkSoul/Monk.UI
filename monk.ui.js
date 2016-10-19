@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.2.5
+ * version: 0.2.6
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,7 +18,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.2.4";
+    exports.v = "0.2.6";
     // 初始化文本框
     // 设置必填图标位置
     exports.setRequireIconOffset = function (parent, init) {
@@ -87,10 +87,8 @@
                 var value = input.value;
                 if (value != "") {
                     clearBtn.style.cssText = "visibility:visible;";
-                    exports.setRequireIconOffset(parent);
                 } else {
                     clearBtn.style.cssText = "visibility:hidden;";
-                    exports.setRequireIconOffset(parent, true);
                 }
                 // 绑定关闭按钮
                 clearBtn.addEventListener("click", function () {
