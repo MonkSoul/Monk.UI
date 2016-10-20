@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.2.7
+ * version: 0.2.8
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,7 +18,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.2.7";
+    exports.v = "0.2.8";
     // 初始化文本框
     // 设置必填图标位置
     exports.setRequireIconOffset = function (parent, init) {
