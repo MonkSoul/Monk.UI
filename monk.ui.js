@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.3.1
+ * version: 0.3.2
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,18 +18,36 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.3.0";
+    exports.v = "0.3.2";
+    exports.nextAll = function (el) {
+        var eles = [];
+
+        function nextCore(el) {
+            var next = el.nextElementSibling;
+            if (next) {
+                eles.push(next);
+                arguments.callee(next);
+            }
+        }
+        nextCore(el);
+        return eles;
+    };
     // 初始化文本框
     // 设置必填图标位置
     exports.setRequireIconOffset = function (parent, init) {
+        var that = this;
         var requireIcon = parent.querySelector(".monk-iconfont.icon-monk-required");
         var clearBtn = parent.querySelector(".monk-clear-input");
         if (requireIcon && clearBtn) {
             if (init) {
-                var width = requireIcon.offsetWidth;
-                var parentWidth = parent.offsetWidth - 2;
-                var offsetLeft = requireIcon.offsetLeft;
-                requireIcon.style.right = -(parentWidth - offsetLeft - width) + "px";
+                var nexts = that.nextAll(requireIcon);
+                var totalWidth = 0;
+                Array.prototype.forEach.call(nexts, function (next, i) {
+                    if (next) {
+                        totalWidth += next.offsetWidth;
+                    }
+                });
+                requireIcon.style.right = -totalWidth + "px";
             } else {
                 requireIcon.style.right = "0px";
             }
