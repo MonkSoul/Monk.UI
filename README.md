@@ -7,7 +7,7 @@
 - 原创作者：`百小僧`
 - 开源协议：`MIT License`
 - 开发时间：`2016年10月13日`
-- 项目版本：`0.2.8`
+- 项目版本：`0.2.9`
 - 项目名称：`Monk.UI`
 - 版权所有：[百签软件（中山）有限公司](http://www.baisoft.org)
 - 联系方式：QQ群：`123049073`，作者QQ：`8020292`
@@ -849,7 +849,7 @@ for (int index = 1; index < data.length; index++) {
 <!--定义模板，<% %> 包裹Javascript代码，<%= %> 输出变量 -->
 <script type="text/html" id="tppl">
     <% for(var i=0; i < list.length;i++){ %>
-                <li>名称：<%=list[i].name %></li>
+    <li>名称：<%=list[i].name %></li>
     <%} %>
 </script>
 ```

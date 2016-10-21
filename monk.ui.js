@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.2.8
+ * version: 0.2.9
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,7 +18,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.2.8";
+    exports.v = "0.2.9";
     // 初始化文本框
     // 设置必填图标位置
     exports.setRequireIconOffset = function (parent, init) {
@@ -616,43 +616,46 @@
                 }
             });
         }
-        ; reset.addEventListener("click", function () {
-            var form = getParentsForm(this);
-            if (form) {
-                form.reset();
-                // 重置输入框
-                var inputs = form.querySelectorAll(".monk-form-input,.monk-form-textarea");
-                Array.prototype.forEach.call(inputs, function (input, i) {
-                    var parent = input.parentNode;
-                    var value = input.value.trim();
-                    var clearBtn = parent.querySelector(".monk-clear-input");
-                    if (clearBtn) {
-                        if (value != "") {
-                            clearBtn.style.cssText = "visibility:visible;";
-                            exports.setRequireIconOffset(parent);
-                        } else {
-                            clearBtn.style.cssText = "visibility:hidden;";
-                            exports.setRequireIconOffset(parent, true);
+        ;
+        if (reset) {
+            reset.addEventListener("click", function () {
+                var form = getParentsForm(this);
+                if (form) {
+                    form.reset();
+                    // 重置输入框
+                    var inputs = form.querySelectorAll(".monk-form-input,.monk-form-textarea");
+                    Array.prototype.forEach.call(inputs, function (input, i) {
+                        var parent = input.parentNode;
+                        var value = input.value.trim();
+                        var clearBtn = parent.querySelector(".monk-clear-input");
+                        if (clearBtn) {
+                            if (value != "") {
+                                clearBtn.style.cssText = "visibility:visible;";
+                                exports.setRequireIconOffset(parent);
+                            } else {
+                                clearBtn.style.cssText = "visibility:hidden;";
+                                exports.setRequireIconOffset(parent, true);
+                            }
                         }
-                    }
-                });
-                // 重置radio，checkbox，switch
-                resetCheckboxRadio(form, "checkbox");
-                resetCheckboxRadio(form, "switch");
-                resetCheckboxRadio(form, "radio");
-                // 重置时间（无需重置）
-                // 重置下拉
-                var selects = form.querySelectorAll(".monk-select");
-                Array.prototype.forEach.call(selects, function (select, i) {
-                    var option = select.querySelectorAll("option")[select.selectedIndex];
-                    var selectValue = option.value;
-                    var selectText = option.textContent;
-                    var lastSelectOption = select.parentNode.querySelector(".monk-form-option[selected='selected']");
-                    lastSelectOption ? lastSelectOption.removeAttribute("selected") : "";
-                    select.parentNode.querySelector(".monk-form-option[data-value='" + selectValue + "']").setAttribute("selected", "selected");
-                    select.parentNode.parentNode.querySelector(".monk-form-select-wrap .monk-form-input").setAttribute("value", selectText);
-                });
-            }
-        });
+                    });
+                    // 重置radio，checkbox，switch
+                    resetCheckboxRadio(form, "checkbox");
+                    resetCheckboxRadio(form, "switch");
+                    resetCheckboxRadio(form, "radio");
+                    // 重置时间（无需重置）
+                    // 重置下拉
+                    var selects = form.querySelectorAll(".monk-select");
+                    Array.prototype.forEach.call(selects, function (select, i) {
+                        var option = select.querySelectorAll("option")[select.selectedIndex];
+                        var selectValue = option.value;
+                        var selectText = option.textContent;
+                        var lastSelectOption = select.parentNode.querySelector(".monk-form-option[selected='selected']");
+                        lastSelectOption ? lastSelectOption.removeAttribute("selected") : "";
+                        select.parentNode.querySelector(".monk-form-option[data-value='" + selectValue + "']").setAttribute("selected", "selected");
+                        select.parentNode.parentNode.querySelector(".monk-form-select-wrap .monk-form-input").setAttribute("value", selectText);
+                    });
+                }
+            });
+        }
     }();
 });
