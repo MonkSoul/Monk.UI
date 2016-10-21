@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.3.3
+ * version: 0.3.4
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -18,7 +18,7 @@
     }
 }(function (HExports) {
     var exports = typeof HExports !== 'undefined' ? HExports : {};
-    exports.v = "0.3.2";
+    exports.v = "0.3.4";
     exports.nextAll = function (el) {
         var eles = [];
 
@@ -99,6 +99,9 @@
                         exports.setRequireIconOffset(parent, true);
                     }
                 }
+            });
+            input.parentElement.addEventListener("click", function () {
+                this.querySelector(".monk-form-input,.monk-form-textarea").focus();
             });
             ; var clearBtn = input.parentNode.querySelector(".monk-clear-input");
             if (clearBtn) {
