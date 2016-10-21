@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.css
- * version: 0.2.9
+ * version: 0.3.0
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -58,18 +58,19 @@ input[type="number"] { -moz-appearance: textfield; }
 
 @font-face { font-family: 'iconfont'; src: url('fonts/iconfont.eot'); /* IE9*/ src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('fonts/iconfont.woff') format('woff'), /* chrome、firefox */ url('fonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */ }
 .monk-iconfont { font-family: "iconfont" !important; font-size: 16px; font-style: normal; -webkit-font-smoothing: antialiased; -webkit-text-stroke-width: 0.2px; -moz-osx-font-smoothing: grayscale; }
-.icon-monk-number:before { content: "\e60a"; }
-.icon-monk-file:before { content: "\e60f"; }
-.icon-monk-time:before { content: "\e60c"; }
-.icon-monk-arrowup:before { content: "\e602"; }
-.icon-monk-required:before { content: "\e600"; }
-.icon-monk-dagou:before { content: "\e604"; }
-.icon-monk-input:before { content: "\e601"; }
-.icon-monk-date:before { content: "\e60e"; }
-.icon-monk-radio:before { content: "\e608"; }
-.icon-monk-radio-checked:before { content: "\e609"; }
-.icon-monk-dacha:before { content: "\e607"; }
-.icon-monk-arrowdown:before { content: "\e606"; }
+.icon-monk-number:before { content: "\f60a"; }
+.icon-monk-file:before { content: "\f60f"; }
+.icon-monk-time:before { content: "\f60c"; }
+.icon-monk-arrowup:before { content: "\f602"; }
+.icon-monk-required:before { content: "\f600"; }
+.icon-monk-dagou:before { content: "\f604"; }
+.icon-monk-input:before { content: "\f601"; }
+.icon-monk-date:before { content: "\f60e"; }
+.icon-monk-radio:before { content: "\f608"; }
+.icon-monk-radio-checked:before { content: "\f609"; }
+.icon-monk-dacha:before { content: "\f607"; }
+.icon-monk-arrowdown:before { content: "\f606"; }
+
 
 /*基础*/
 * { box-sizing: border-box; -moz-box-sizing: border-box; }
