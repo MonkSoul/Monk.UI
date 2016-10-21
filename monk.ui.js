@@ -1,6 +1,6 @@
 ﻿/*!
  * monk.ui.js
- * version: 0.3.2
+ * version: 0.3.3
  * author: 百小僧（QQ：8020292）
  * site：http://www.baisoft.org
  * QQ群：123049073
@@ -117,6 +117,19 @@
                     this.style.cssText = "visibility:hidden;";
                 });
                 ;
+            }
+            // 自适应
+            input.style.width = "";
+            var areaWidth = input.parentNode.parentNode.offsetWidth;
+            var parentWidth = input.parentNode.offsetWidth;
+            if (parentWidth >= areaWidth) {
+                var width = 0;
+                Array.prototype.filter.call(input.parentNode.children, function (child) {
+                    if (child !== input) {
+                        width += child.offsetWidth;
+                    }
+                });
+                input.style.width = areaWidth - width - 2 + "px";
             }
         });
     }();
@@ -676,4 +689,22 @@
             });
         }
     }();
+    window.onresize = function () {
+        var inputs = document.querySelectorAll(".monk-form-input,.monk-form-textarea");
+        Array.prototype.forEach.call(inputs, function (input, i) {
+            input.style.width = "";
+            // 自适应
+            var areaWidth = input.parentNode.parentNode.offsetWidth;
+            var parentWidth = input.parentNode.offsetWidth;
+            if (parentWidth >= areaWidth) {
+                var width = 0;
+                Array.prototype.filter.call(input.parentNode.children, function (child) {
+                    if (child !== input) {
+                        width += child.offsetWidth;
+                    }
+                });
+                input.style.width = areaWidth - width - 2 + "px";
+            }
+        });
+    };
 });
