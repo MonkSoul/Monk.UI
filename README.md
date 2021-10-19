@@ -9,8 +9,6 @@
 - 开发时间：`2016年10月13日`
 - 项目版本：`0.3.5`
 - 项目名称：`Monk.UI`
-- 版权所有：[百签软件（中山）有限公司](http://www.baisoft.org)
-- 联系方式：QQ群：`123049073`，作者QQ：`8020292`
 - 开发理念：`一切从简，只为了更懒`
 - Github地址：[https://github.com/MonkSoul/Monk.UI/](https://github.com/MonkSoul/Monk.UI/)
 - 码云地址：[http://git.oschina.net/baisoft_org/Monk.UI](http://git.oschina.net/baisoft_org/Monk.UI)
